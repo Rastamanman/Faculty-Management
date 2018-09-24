@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Test.Models
 {
-    interface ITest
+    public interface ITest
     {
         bool passed(int value);
+        int Pondere { get; set; }
     }
 }

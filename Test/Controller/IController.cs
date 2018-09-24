@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.View
+namespace Test.Controller
 {
-    interface IView
+    public interface IController
     {
-
     }
 }

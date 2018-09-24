@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Test.Models
 {
-    interface ISpecialization
+    public interface ISpecialization
     {
         List<ITest> GetTests();
         void sortCanditati();
+        string Nume { get; set; }
+        int Locuri { get; set; }
     }
 }

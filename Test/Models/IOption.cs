@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Test.Models
 {
-    interface IOption
+    public interface IOption
     {
         bool checkIfPassed();
         void GenerateResults();
+        bool HaveSpec(ISpecialization spec);
+        string Nume { get; }
+        int Index { get; set; }
+        string Tip { get; }
     }
 }

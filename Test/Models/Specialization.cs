@@ -27,6 +27,18 @@ namespace Test.Models
             facultate = fac;
         }
 
+        public string Nume
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Locuri
+        {
+            get { return locuri; }
+            set { locuri = value; }
+        }
+
         public void sortCanditati()
         {
             //tobedone
