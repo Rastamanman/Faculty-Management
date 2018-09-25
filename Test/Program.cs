@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Test.Controller;
-using Test.Models;
-using Test.View;
+using Proiect.Controller;
+using Proiect.Models;
+using Proiect.View;
 
-namespace Test
+namespace Proiect
 {
     static class Program
     {
@@ -27,6 +27,18 @@ namespace Test
             Student stud2 = new Student("Domnul", "Annunaki", 4020202135445, null);
             fac.AddStudent(stud);
             fac.AddStudent(stud2);
+            Test test1 = new Test("Examen", 30, 5);
+            Test test2 = new Test("Nota Bac", 70);
+            List<ITest> teste = new List<ITest>();
+            teste.Add(test1);
+            teste.Add(test2);
+            Specialization spec1 = new Specialization("Laser Tek", fac, 30, 20, teste);
+            teste = new List<ITest>();
+            test2 = new Test("Nota Bac", 100);
+            teste.Add(test2);
+            Specialization spec2 = new Specialization("Aero Dinamics", fac, 15, 5, teste);
+            fac.AddSpec(spec1);
+            fac.AddSpec(spec2);
 
             IFacultyController mainController = new FacultyController(mainView, fac);
 

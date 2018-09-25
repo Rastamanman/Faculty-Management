@@ -1,4 +1,4 @@
-﻿namespace Test.View
+﻿namespace Proiect.View
 {
     partial class StudV
     {

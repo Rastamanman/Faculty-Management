@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Test.Controller;
-using Test.Models;
+using Proiect.Controller;
+using Proiect.Models;
 
-namespace Test.View
+namespace Proiect.View
 {
     public partial class StudV : Form, IFacultyView
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Models
+namespace Proiect.Models
 {
     class Faculty : IFaculty
     {
@@ -25,12 +25,22 @@ namespace Test.Models
         /// </summary>
         /// <param name="spec"></param>
         /// <returns></returns>
-        public List<IStudent> GetStudsFor(ISpecialization spec)
+        public List<IStudent> GetStudsFor(int index)
         {
+            ISpecialization specificSpec = null;
+            foreach (Specialization spec in specs)
+            {
+                if (spec.Index == index)
+                {
+                    specificSpec = spec;
+                    break;
+                }
+            }
+            
             List<IStudent> returnedList = new List<IStudent>();
             foreach(Student stud in students)
             {
-                if (stud.AttendAtSpec(spec))
+                if (stud.AttendAtSpec(specificSpec))
                     returnedList.Add(stud);
             }
             return returnedList;
@@ -51,7 +61,10 @@ namespace Test.Models
         /// <param name="stud"></param>
         public void AddStudent(IStudent stud)
         {
-            stud.Index = students.Count + 1;
+            if (students.Count != 0)
+                stud.Index = students.Last().Index + 1;
+            else
+                stud.Index = 1;
             students.Add(stud);
         }
 
@@ -76,16 +89,12 @@ namespace Test.Models
         /// <param name="id"></param>
         public void RemoveStudent(int id)
         {
-            bool updateID = false;
             for (int i = 0; i < students.Count; i++)
             {
-                if (updateID)
-                    students[i].Index -= 1;
-                else if (students[i].Index == id)
+                if (students[i].Index == id)
                 {
                     students.Remove(students[i]);
-                    updateID = true;
-                    i--;
+                    return;
                 }
             }
         }
@@ -105,6 +114,11 @@ namespace Test.Models
             return null;
         }
 
+        /// <summary>
+        /// Update a specific student.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="stud"></param>
         public void UpdateStudent(int index, IStudent stud)
         {
             for(int i = 0; i < students.Count; i++)
@@ -112,6 +126,82 @@ namespace Test.Models
                 if(students[i].Index == index)
                 {
                     students[i] = stud;
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get all specializations.
+        /// </summary>
+        /// <returns></returns>
+        public List<ISpecialization> GetSpecs()
+        {
+            return specs;
+        }
+
+        public void RemoveSpec(int index)
+        {
+            for(int it = 0; it < specs.Count; it++)
+            {
+                if(specs[it].Index == index)
+                {
+                    specs.Remove(specs[it]);
+                    return;
+                }
+            }
+        }
+
+        public ISpecialization GetSpecById(int index)
+        {
+            foreach(Specialization spec in specs)
+            {
+                if (spec.Index == index)
+                    return spec;
+            }
+            return null;
+        }
+
+        public List<ITest> GetTests(int index)
+        {
+            foreach(Specialization spec in specs)
+            {
+                if(spec.Index == index)
+                {
+                    return spec.GetTests();
+                }
+            }
+            return null;
+        }
+
+        public void AddSpec(ISpecialization specToAdd)
+        {
+            if (specs.Count != 0)
+                specToAdd.Index = specs.Last().Index + 1;
+            else
+                specToAdd.Index = 1;
+            specs.Add(specToAdd);
+        }
+
+        public void RemoveTest(int specIndex, int testIndex)
+        {
+            foreach(Specialization spec in specs)
+            {
+                if(spec.Index == specIndex)
+                {
+                    spec.RemoveTest(testIndex);
+                    return;
+                }
+            }
+        }
+
+        public void UpdateSpec(ISpecialization spec)
+        {
+            for(int it = 0; it < specs.Count; it++)
+            {
+                if(specs[it].Index == spec.Index)
+                {
+                    specs[it] = spec;
                     return;
                 }
             }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.View;
-using Test.Models;
+using Proiect.View;
+using Proiect.Models;
 
-namespace Test.Controller
+namespace Proiect.Controller
 {
     class FacultyController : IFacultyController
     {
@@ -79,6 +79,41 @@ namespace Test.Controller
         public void UpdateStudent(int index, IStudent stud)
         {
             faculta.UpdateStudent(index, stud);
+        }
+
+        public List<ISpecialization> GetSpecs()
+        {
+            return faculta.GetSpecs();
+        }
+
+        public void RemoveSpec(int index)
+        {
+            faculta.RemoveSpec(index);
+        }
+
+        public ISpecialization GetSpecById(int index)
+        {
+            return faculta.GetSpecById(index);
+        }
+
+        public List<ITest> GetTests(int index)
+        {
+            return faculta.GetTests(index);
+        }
+
+        public List<IStudent> GetStudsFor(int index)
+        {
+            return faculta.GetStudsFor(index);
+        }
+
+        public void RemoveTest(int specIndex, int testIndex)
+        {
+            faculta.RemoveTest(specIndex, testIndex);
+        }
+
+        public void UpdateSpec(ISpecialization spec)
+        {
+            faculta.UpdateSpec(spec);
         }
     }
 }

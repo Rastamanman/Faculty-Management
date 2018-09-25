@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Models
+namespace Proiect.Models
 {
     public interface ITest
     {
+        int Req { get; set; }
+        string Nume { get; set; }
         bool passed(int value);
         int Pondere { get; set; }
+        int Index { get; set; }
     }
 }

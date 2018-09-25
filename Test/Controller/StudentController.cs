@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Models;
-using Test.View;
+using Proiect.Models;
+using Proiect.View;
 
-namespace Test.Controller
+namespace Proiect.Controller
 {
     class StudentController : IStudentController
     {

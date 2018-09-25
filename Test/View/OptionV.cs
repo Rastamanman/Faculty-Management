@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Test.Controller;
+using Proiect.Controller;
 
-namespace Test.View
+namespace Proiect.View
 {
     public partial class OptionV : Form, IStudentView
     {

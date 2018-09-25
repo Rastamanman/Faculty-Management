@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Models;
+using Proiect.Models;
 
-namespace Test.Controller
+namespace Proiect.Controller
 {
     public interface IFacultyController : IController
     {
@@ -16,5 +16,12 @@ namespace Test.Controller
         void AddStudent(IStudent stud);
         ISpecialization GetSpec(string name);
         void UpdateStudent(int index, IStudent stud);
+        List<ISpecialization> GetSpecs();
+        void RemoveSpec(int index);
+        ISpecialization GetSpecById(int index);
+        List<ITest> GetTests(int index);
+        List<IStudent> GetStudsFor(int index);
+        void RemoveTest(int specIndex, int testIndex);
+        void UpdateSpec(ISpecialization spec);
     }
 }

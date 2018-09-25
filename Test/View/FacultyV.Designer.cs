@@ -1,4 +1,4 @@
-﻿namespace Test.View
+﻿namespace Proiect.View
 {
     partial class FacultyV
     {
@@ -59,18 +59,29 @@
             this.sstud = new System.Windows.Forms.Label();
             this.specs = new System.Windows.Forms.TabPage();
             this.specList = new System.Windows.Forms.ListView();
+            this.idSpecL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.numeSpecL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.specInfo = new System.Windows.Forms.Panel();
-            this.tests = new System.Windows.Forms.ListView();
+            this.candList = new System.Windows.Forms.ListView();
+            this.idStud = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.numeCand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prenCand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.testsList = new System.Windows.Forms.ListView();
+            this.idCerinta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.denumire = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.requirement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pondere = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.saveTestsB = new System.Windows.Forms.Button();
             this.remTestB = new System.Windows.Forms.Button();
+            this.seeAdmB = new System.Windows.Forms.Button();
+            this.seeCandB = new System.Windows.Forms.Button();
             this.addTestB = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.candList = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.scandidati = new System.Windows.Forms.Label();
+            this.specBugSize = new System.Windows.Forms.Label();
             this.specTaxSize = new System.Windows.Forms.Label();
             this.specSize = new System.Windows.Forms.Label();
             this.specName = new System.Windows.Forms.Label();
@@ -79,6 +90,8 @@
             this.addSpecB = new System.Windows.Forms.Button();
             this.viewSpecB = new System.Windows.Forms.Button();
             this.sspecs = new System.Windows.Forms.Label();
+            this.sspecIndex = new System.Windows.Forms.Label();
+            this.specID = new System.Windows.Forms.Label();
             this.mainTab.SuspendLayout();
             this.students.SuspendLayout();
             this.studentInfo.SuspendLayout();
@@ -370,82 +383,176 @@
             // 
             // specList
             // 
+            this.specList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idSpecL,
+            this.numeSpecL});
+            this.specList.FullRowSelect = true;
             this.specList.Location = new System.Drawing.Point(10, 24);
             this.specList.Name = "specList";
             this.specList.Size = new System.Drawing.Size(305, 319);
             this.specList.TabIndex = 4;
             this.specList.UseCompatibleStateImageBehavior = false;
+            this.specList.View = System.Windows.Forms.View.Details;
+            // 
+            // idSpecL
+            // 
+            this.idSpecL.Text = "ID";
+            // 
+            // numeSpecL
+            // 
+            this.numeSpecL.Text = "Denumire";
+            this.numeSpecL.Width = 240;
             // 
             // specInfo
             // 
-            this.specInfo.Controls.Add(this.tests);
+            this.specInfo.Controls.Add(this.candList);
+            this.specInfo.Controls.Add(this.testsList);
             this.specInfo.Controls.Add(this.saveTestsB);
             this.specInfo.Controls.Add(this.remTestB);
+            this.specInfo.Controls.Add(this.seeAdmB);
+            this.specInfo.Controls.Add(this.seeCandB);
             this.specInfo.Controls.Add(this.addTestB);
+            this.specInfo.Controls.Add(this.label4);
             this.specInfo.Controls.Add(this.label2);
             this.specInfo.Controls.Add(this.label1);
-            this.specInfo.Controls.Add(this.candList);
             this.specInfo.Controls.Add(this.label3);
             this.specInfo.Controls.Add(this.scandidati);
+            this.specInfo.Controls.Add(this.specBugSize);
             this.specInfo.Controls.Add(this.specTaxSize);
             this.specInfo.Controls.Add(this.specSize);
             this.specInfo.Controls.Add(this.specName);
+            this.specInfo.Controls.Add(this.specID);
+            this.specInfo.Controls.Add(this.sspecIndex);
             this.specInfo.Controls.Add(this.sname);
             this.specInfo.Location = new System.Drawing.Point(321, 7);
             this.specInfo.Name = "specInfo";
             this.specInfo.Size = new System.Drawing.Size(441, 365);
             this.specInfo.TabIndex = 3;
             // 
-            // tests
+            // candList
             // 
-            this.tests.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.candList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idStud,
+            this.numeCand,
+            this.prenCand});
+            this.candList.FullRowSelect = true;
+            this.candList.Location = new System.Drawing.Point(16, 255);
+            this.candList.Name = "candList";
+            this.candList.Size = new System.Drawing.Size(425, 97);
+            this.candList.TabIndex = 3;
+            this.candList.UseCompatibleStateImageBehavior = false;
+            this.candList.View = System.Windows.Forms.View.Details;
+            // 
+            // idStud
+            // 
+            this.idStud.Text = "ID";
+            this.idStud.Width = 40;
+            // 
+            // numeCand
+            // 
+            this.numeCand.Text = "Nume";
+            this.numeCand.Width = 150;
+            // 
+            // prenCand
+            // 
+            this.prenCand.Text = "Prenume";
+            this.prenCand.Width = 227;
+            // 
+            // testsList
+            // 
+            this.testsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idCerinta,
             this.denumire,
-            this.requirement});
-            this.tests.Location = new System.Drawing.Point(16, 95);
-            this.tests.Name = "tests";
-            this.tests.Size = new System.Drawing.Size(338, 97);
-            this.tests.TabIndex = 2;
-            this.tests.UseCompatibleStateImageBehavior = false;
+            this.requirement,
+            this.pondere});
+            this.testsList.FullRowSelect = true;
+            this.testsList.Location = new System.Drawing.Point(16, 110);
+            this.testsList.Name = "testsList";
+            this.testsList.Size = new System.Drawing.Size(338, 97);
+            this.testsList.TabIndex = 2;
+            this.testsList.UseCompatibleStateImageBehavior = false;
+            this.testsList.View = System.Windows.Forms.View.Details;
+            // 
+            // idCerinta
+            // 
+            this.idCerinta.Text = "ID";
+            this.idCerinta.Width = 40;
             // 
             // denumire
             // 
             this.denumire.Text = "Denumire";
+            this.denumire.Width = 120;
             // 
             // requirement
             // 
-            this.requirement.Text = "Cerinta";
+            this.requirement.Text = "Cerinta Minima";
+            this.requirement.Width = 100;
+            // 
+            // pondere
+            // 
+            this.pondere.Text = "Pondere(%)";
+            this.pondere.Width = 70;
             // 
             // saveTestsB
             // 
-            this.saveTestsB.Location = new System.Drawing.Point(360, 155);
+            this.saveTestsB.Location = new System.Drawing.Point(360, 170);
             this.saveTestsB.Name = "saveTestsB";
             this.saveTestsB.Size = new System.Drawing.Size(78, 37);
             this.saveTestsB.TabIndex = 2;
             this.saveTestsB.Text = "Save changes";
             this.saveTestsB.UseVisualStyleBackColor = true;
+            this.saveTestsB.Click += new System.EventHandler(this.saveTestsB_Click);
             // 
             // remTestB
             // 
-            this.remTestB.Location = new System.Drawing.Point(360, 125);
+            this.remTestB.Location = new System.Drawing.Point(360, 140);
             this.remTestB.Name = "remTestB";
             this.remTestB.Size = new System.Drawing.Size(78, 24);
             this.remTestB.TabIndex = 2;
             this.remTestB.Text = "Remove test";
             this.remTestB.UseVisualStyleBackColor = true;
+            this.remTestB.Click += new System.EventHandler(this.remTestB_Click);
+            // 
+            // seeAdmB
+            // 
+            this.seeAdmB.Location = new System.Drawing.Point(151, 213);
+            this.seeAdmB.Name = "seeAdmB";
+            this.seeAdmB.Size = new System.Drawing.Size(121, 24);
+            this.seeAdmB.TabIndex = 2;
+            this.seeAdmB.Text = "Vezi Admisi";
+            this.seeAdmB.UseVisualStyleBackColor = true;
+            // 
+            // seeCandB
+            // 
+            this.seeCandB.Location = new System.Drawing.Point(16, 213);
+            this.seeCandB.Name = "seeCandB";
+            this.seeCandB.Size = new System.Drawing.Size(129, 24);
+            this.seeCandB.TabIndex = 2;
+            this.seeCandB.Text = "Vezi Candidati";
+            this.seeCandB.UseVisualStyleBackColor = true;
             // 
             // addTestB
             // 
-            this.addTestB.Location = new System.Drawing.Point(360, 95);
+            this.addTestB.Location = new System.Drawing.Point(360, 110);
             this.addTestB.Name = "addTestB";
             this.addTestB.Size = new System.Drawing.Size(78, 24);
             this.addTestB.TabIndex = 2;
             this.addTestB.Text = "Add new test";
             this.addTestB.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Numar Locuri Buget:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 56);
+            this.label2.Location = new System.Drawing.Point(13, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
             this.label2.TabIndex = 1;
@@ -454,24 +561,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 34);
+            this.label1.Location = new System.Drawing.Point(13, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Numar Locuri:";
             // 
-            // candList
-            // 
-            this.candList.FormattingEnabled = true;
-            this.candList.Location = new System.Drawing.Point(16, 211);
-            this.candList.Name = "candList";
-            this.candList.Size = new System.Drawing.Size(422, 108);
-            this.candList.TabIndex = 0;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 78);
+            this.label3.Location = new System.Drawing.Point(13, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 13);
             this.label3.TabIndex = 1;
@@ -480,16 +579,25 @@
             // scandidati
             // 
             this.scandidati.AutoSize = true;
-            this.scandidati.Location = new System.Drawing.Point(13, 195);
+            this.scandidati.Location = new System.Drawing.Point(13, 238);
             this.scandidati.Name = "scandidati";
             this.scandidati.Size = new System.Drawing.Size(79, 13);
             this.scandidati.TabIndex = 1;
             this.scandidati.Text = "Lista Candidati:";
             // 
+            // specBugSize
+            // 
+            this.specBugSize.AutoSize = true;
+            this.specBugSize.Location = new System.Drawing.Point(132, 78);
+            this.specBugSize.Name = "specBugSize";
+            this.specBugSize.Size = new System.Drawing.Size(87, 13);
+            this.specBugSize.TabIndex = 1;
+            this.specBugSize.Text = "defaultBugetSize";
+            // 
             // specTaxSize
             // 
             this.specTaxSize.AutoSize = true;
-            this.specTaxSize.Location = new System.Drawing.Point(132, 56);
+            this.specTaxSize.Location = new System.Drawing.Point(132, 61);
             this.specTaxSize.Name = "specTaxSize";
             this.specTaxSize.Size = new System.Drawing.Size(77, 13);
             this.specTaxSize.TabIndex = 1;
@@ -498,7 +606,7 @@
             // specSize
             // 
             this.specSize.AutoSize = true;
-            this.specSize.Location = new System.Drawing.Point(132, 34);
+            this.specSize.Location = new System.Drawing.Point(132, 43);
             this.specSize.Name = "specSize";
             this.specSize.Size = new System.Drawing.Size(59, 13);
             this.specSize.TabIndex = 1;
@@ -507,7 +615,7 @@
             // specName
             // 
             this.specName.AutoSize = true;
-            this.specName.Location = new System.Drawing.Point(132, 11);
+            this.specName.Location = new System.Drawing.Point(132, 25);
             this.specName.Name = "specName";
             this.specName.Size = new System.Drawing.Size(67, 13);
             this.specName.TabIndex = 1;
@@ -516,7 +624,7 @@
             // sname
             // 
             this.sname.AutoSize = true;
-            this.sname.Location = new System.Drawing.Point(13, 11);
+            this.sname.Location = new System.Drawing.Point(13, 25);
             this.sname.Name = "sname";
             this.sname.Size = new System.Drawing.Size(38, 13);
             this.sname.TabIndex = 1;
@@ -530,6 +638,7 @@
             this.remSpecB.TabIndex = 2;
             this.remSpecB.Text = "Remove Spec";
             this.remSpecB.UseVisualStyleBackColor = true;
+            this.remSpecB.Click += new System.EventHandler(this.remSpecB_Click);
             // 
             // addSpecB
             // 
@@ -539,6 +648,7 @@
             this.addSpecB.TabIndex = 2;
             this.addSpecB.Text = "Add New Spec";
             this.addSpecB.UseVisualStyleBackColor = true;
+            this.addSpecB.Click += new System.EventHandler(this.addSpecB_Click);
             // 
             // viewSpecB
             // 
@@ -548,6 +658,7 @@
             this.viewSpecB.TabIndex = 2;
             this.viewSpecB.Text = "View Spec Info";
             this.viewSpecB.UseVisualStyleBackColor = true;
+            this.viewSpecB.Click += new System.EventHandler(this.viewSpecB_Click);
             // 
             // sspecs
             // 
@@ -557,6 +668,24 @@
             this.sspecs.Size = new System.Drawing.Size(63, 13);
             this.sspecs.TabIndex = 1;
             this.sspecs.Text = "Specializari:";
+            // 
+            // sspecIndex
+            // 
+            this.sspecIndex.AutoSize = true;
+            this.sspecIndex.Location = new System.Drawing.Point(13, 8);
+            this.sspecIndex.Name = "sspecIndex";
+            this.sspecIndex.Size = new System.Drawing.Size(21, 13);
+            this.sspecIndex.TabIndex = 1;
+            this.sspecIndex.Text = "ID:";
+            // 
+            // specID
+            // 
+            this.specID.AutoSize = true;
+            this.specID.Location = new System.Drawing.Point(132, 8);
+            this.specID.Name = "specID";
+            this.specID.Size = new System.Drawing.Size(65, 13);
+            this.specID.TabIndex = 1;
+            this.specID.Text = "defaultIndex";
             // 
             // FacultyV
             // 
@@ -608,7 +737,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView tests;
+        private System.Windows.Forms.ListView testsList;
         private System.Windows.Forms.Label scandidati;
         private System.Windows.Forms.Label specTaxSize;
         private System.Windows.Forms.Label specSize;
@@ -618,7 +747,6 @@
         private System.Windows.Forms.Button saveTestsB;
         private System.Windows.Forms.Button remTestB;
         private System.Windows.Forms.Button addTestB;
-        private System.Windows.Forms.ListBox candList;
         private System.Windows.Forms.Button remSpecB;
         private System.Windows.Forms.Button addSpecB;
         private System.Windows.Forms.ListView specList;
@@ -633,5 +761,19 @@
         private System.Windows.Forms.ColumnHeader numeOp;
         private System.Windows.Forms.ColumnHeader tipOp;
         private System.Windows.Forms.ColumnHeader notaOP;
+        private System.Windows.Forms.ColumnHeader idSpecL;
+        private System.Windows.Forms.ColumnHeader numeSpecL;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label specBugSize;
+        private System.Windows.Forms.Button seeAdmB;
+        private System.Windows.Forms.Button seeCandB;
+        private System.Windows.Forms.ListView candList;
+        private System.Windows.Forms.ColumnHeader idCerinta;
+        private System.Windows.Forms.ColumnHeader pondere;
+        private System.Windows.Forms.ColumnHeader idStud;
+        private System.Windows.Forms.ColumnHeader numeCand;
+        private System.Windows.Forms.ColumnHeader prenCand;
+        private System.Windows.Forms.Label specID;
+        private System.Windows.Forms.Label sspecIndex;
     }
 }

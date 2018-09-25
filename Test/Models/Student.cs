@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Models
+namespace Proiect.Models
 {
     class Student : IStudent
     {
@@ -15,16 +15,21 @@ namespace Test.Models
         private List<IOption> optiuni;
         private bool admis;
         private bool buget;
+        private ISpecialization enroledSpec;
 
-        public Student(string n, string pren, long c, List<IOption> opt)
+        public Student(string n, string pren, long c, List<IOption> opt = null)
         {
             nume = n;
             prenume = pren;
             cnp = c;
-            optiuni = opt;
+            if (opt != null)
+                optiuni = opt;
+            else
+                optiuni = new List<IOption>();
             admis = false;
             buget = false;
         }
+
 
         /// <summary>
         /// Get/Set for nume.
@@ -79,7 +84,10 @@ namespace Test.Models
         /// <param name="option"></param>
         public void addOption(IOption option)
         {
-            option.Index = optiuni.Count + 1;
+            if (optiuni.Count == 0)
+                option.Index = 1;
+            else
+                option.Index = optiuni.Last().Index + 1;
             optiuni.Add(option);
         }
 
@@ -100,6 +108,8 @@ namespace Test.Models
         /// <returns></returns>
         public bool AttendAtSpec(ISpecialization spec)
         {
+            if (optiuni.Count == 0)
+                return false;
             foreach(Option opt in optiuni)
             {
                 if (opt.HaveSpec(spec) == true)
@@ -128,6 +138,8 @@ namespace Test.Models
 
         public void ClearOptions()
         {
+            if (optiuni.Count == 0)
+                return;
             optiuni.Clear();
         }
     }

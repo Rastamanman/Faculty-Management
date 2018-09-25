@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Models
+namespace Proiect.Models
 {
     class Option : IOption
     {
@@ -19,7 +19,9 @@ namespace Test.Models
             this.spec = spec;
             this.buget = buget;
             requirements = spec.GetTests();
+            results = new int[requirements.Count];
             GenerateResults();
+            
         }
 
         /// <summary>
