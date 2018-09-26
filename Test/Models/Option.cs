@@ -21,7 +21,15 @@ namespace Proiect.Models
             requirements = spec.GetTests();
             results = new int[requirements.Count];
             GenerateResults();
-            
+        }
+
+        /// <summary>
+        /// Update Option's tests.
+        /// </summary>
+        public void Update()
+        {
+            requirements = spec.GetTests();
+            results = new int[requirements.Count];
         }
 
         /// <summary>

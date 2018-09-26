@@ -14,5 +14,6 @@ namespace Proiect.Models
         string Nume { get; }
         int Index { get; set; }
         string Tip { get; }
+        void Update();
     }
 }

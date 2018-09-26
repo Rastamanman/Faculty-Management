@@ -30,7 +30,6 @@ namespace Proiect.Models
             buget = false;
         }
 
-
         /// <summary>
         /// Get/Set for nume.
         /// </summary>
@@ -136,11 +135,25 @@ namespace Proiect.Models
             return optiuni;
         }
 
+        /// <summary>
+        /// Clear options data.
+        /// </summary>
         public void ClearOptions()
         {
             if (optiuni.Count == 0)
                 return;
             optiuni.Clear();
+        }
+
+        /// <summary>
+        /// Update options for latest tests.
+        /// </summary>
+        public void UpdateOptions()
+        {
+            foreach(IOption op in optiuni)
+            {
+                op.Update();
+            }
         }
     }
 }

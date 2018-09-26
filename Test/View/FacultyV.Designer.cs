@@ -85,13 +85,13 @@
             this.specTaxSize = new System.Windows.Forms.Label();
             this.specSize = new System.Windows.Forms.Label();
             this.specName = new System.Windows.Forms.Label();
+            this.specID = new System.Windows.Forms.Label();
+            this.sspecIndex = new System.Windows.Forms.Label();
             this.sname = new System.Windows.Forms.Label();
             this.remSpecB = new System.Windows.Forms.Button();
             this.addSpecB = new System.Windows.Forms.Button();
             this.viewSpecB = new System.Windows.Forms.Button();
             this.sspecs = new System.Windows.Forms.Label();
-            this.sspecIndex = new System.Windows.Forms.Label();
-            this.specID = new System.Windows.Forms.Label();
             this.mainTab.SuspendLayout();
             this.students.SuspendLayout();
             this.studentInfo.SuspendLayout();
@@ -262,18 +262,18 @@
             this.cnp.AutoSize = true;
             this.cnp.Location = new System.Drawing.Point(70, 80);
             this.cnp.Name = "cnp";
-            this.cnp.Size = new System.Drawing.Size(61, 13);
+            this.cnp.Size = new System.Drawing.Size(10, 13);
             this.cnp.TabIndex = 0;
-            this.cnp.Text = "defaultCNP";
+            this.cnp.Text = ".";
             // 
             // status
             // 
             this.status.AutoSize = true;
             this.status.Location = new System.Drawing.Point(70, 103);
             this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(69, 13);
+            this.status.Size = new System.Drawing.Size(10, 13);
             this.status.TabIndex = 0;
-            this.status.Text = "defaultStatus";
+            this.status.Text = ".";
             // 
             // soptiuni
             // 
@@ -316,27 +316,27 @@
             this.prenume.AutoSize = true;
             this.prenume.Location = new System.Drawing.Point(70, 57);
             this.prenume.Name = "prenume";
-            this.prenume.Size = new System.Drawing.Size(81, 13);
+            this.prenume.Size = new System.Drawing.Size(10, 13);
             this.prenume.TabIndex = 0;
-            this.prenume.Text = "defaultSurname";
+            this.prenume.Text = ".";
             // 
             // nume
             // 
             this.nume.AutoSize = true;
             this.nume.Location = new System.Drawing.Point(70, 33);
             this.nume.Name = "nume";
-            this.nume.Size = new System.Drawing.Size(67, 13);
+            this.nume.Size = new System.Drawing.Size(10, 13);
             this.nume.TabIndex = 0;
-            this.nume.Text = "defaultName";
+            this.nume.Text = ".";
             // 
             // index
             // 
             this.index.AutoSize = true;
             this.index.Location = new System.Drawing.Point(70, 12);
             this.index.Name = "index";
-            this.index.Size = new System.Drawing.Size(65, 13);
+            this.index.Size = new System.Drawing.Size(10, 13);
             this.index.TabIndex = 0;
-            this.index.Text = "defaultIndex";
+            this.index.Text = ".";
             // 
             // sindex
             // 
@@ -530,6 +530,7 @@
             this.seeCandB.TabIndex = 2;
             this.seeCandB.Text = "Vezi Candidati";
             this.seeCandB.UseVisualStyleBackColor = true;
+            this.seeCandB.Click += new System.EventHandler(this.seeCandB_Click);
             // 
             // addTestB
             // 
@@ -539,6 +540,7 @@
             this.addTestB.TabIndex = 2;
             this.addTestB.Text = "Add new test";
             this.addTestB.UseVisualStyleBackColor = true;
+            this.addTestB.Click += new System.EventHandler(this.addTestB_Click);
             // 
             // label4
             // 
@@ -590,36 +592,54 @@
             this.specBugSize.AutoSize = true;
             this.specBugSize.Location = new System.Drawing.Point(132, 78);
             this.specBugSize.Name = "specBugSize";
-            this.specBugSize.Size = new System.Drawing.Size(87, 13);
+            this.specBugSize.Size = new System.Drawing.Size(10, 13);
             this.specBugSize.TabIndex = 1;
-            this.specBugSize.Text = "defaultBugetSize";
+            this.specBugSize.Text = ".";
             // 
             // specTaxSize
             // 
             this.specTaxSize.AutoSize = true;
             this.specTaxSize.Location = new System.Drawing.Point(132, 61);
             this.specTaxSize.Name = "specTaxSize";
-            this.specTaxSize.Size = new System.Drawing.Size(77, 13);
+            this.specTaxSize.Size = new System.Drawing.Size(10, 13);
             this.specTaxSize.TabIndex = 1;
-            this.specTaxSize.Text = "defaultTaxSize";
+            this.specTaxSize.Text = ".";
             // 
             // specSize
             // 
             this.specSize.AutoSize = true;
             this.specSize.Location = new System.Drawing.Point(132, 43);
             this.specSize.Name = "specSize";
-            this.specSize.Size = new System.Drawing.Size(59, 13);
+            this.specSize.Size = new System.Drawing.Size(10, 13);
             this.specSize.TabIndex = 1;
-            this.specSize.Text = "defaultSize";
+            this.specSize.Text = ".";
             // 
             // specName
             // 
             this.specName.AutoSize = true;
             this.specName.Location = new System.Drawing.Point(132, 25);
             this.specName.Name = "specName";
-            this.specName.Size = new System.Drawing.Size(67, 13);
+            this.specName.Size = new System.Drawing.Size(10, 13);
             this.specName.TabIndex = 1;
-            this.specName.Text = "defaultName";
+            this.specName.Text = ".";
+            // 
+            // specID
+            // 
+            this.specID.AutoSize = true;
+            this.specID.Location = new System.Drawing.Point(132, 8);
+            this.specID.Name = "specID";
+            this.specID.Size = new System.Drawing.Size(10, 13);
+            this.specID.TabIndex = 1;
+            this.specID.Text = ".";
+            // 
+            // sspecIndex
+            // 
+            this.sspecIndex.AutoSize = true;
+            this.sspecIndex.Location = new System.Drawing.Point(13, 8);
+            this.sspecIndex.Name = "sspecIndex";
+            this.sspecIndex.Size = new System.Drawing.Size(21, 13);
+            this.sspecIndex.TabIndex = 1;
+            this.sspecIndex.Text = "ID:";
             // 
             // sname
             // 
@@ -668,24 +688,6 @@
             this.sspecs.Size = new System.Drawing.Size(63, 13);
             this.sspecs.TabIndex = 1;
             this.sspecs.Text = "Specializari:";
-            // 
-            // sspecIndex
-            // 
-            this.sspecIndex.AutoSize = true;
-            this.sspecIndex.Location = new System.Drawing.Point(13, 8);
-            this.sspecIndex.Name = "sspecIndex";
-            this.sspecIndex.Size = new System.Drawing.Size(21, 13);
-            this.sspecIndex.TabIndex = 1;
-            this.sspecIndex.Text = "ID:";
-            // 
-            // specID
-            // 
-            this.specID.AutoSize = true;
-            this.specID.Location = new System.Drawing.Point(132, 8);
-            this.specID.Name = "specID";
-            this.specID.Size = new System.Drawing.Size(65, 13);
-            this.specID.TabIndex = 1;
-            this.specID.Text = "defaultIndex";
             // 
             // FacultyV
             // 

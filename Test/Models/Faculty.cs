@@ -56,13 +56,22 @@ namespace Proiect.Models
         }
 
         /// <summary>
+        /// Compute the next index for a new student.
+        /// </summary>
+        /// <returns></returns>
+        public int GetIndexForStud()
+        {
+            return students.Last().Index + 1;
+        }
+
+        /// <summary>
         /// Add a new student.
         /// </summary>
         /// <param name="stud"></param>
         public void AddStudent(IStudent stud)
         {
             if (students.Count != 0)
-                stud.Index = students.Last().Index + 1;
+                stud.Index = GetIndexForStud();
             else
                 stud.Index = 1;
             students.Add(stud);
@@ -119,11 +128,11 @@ namespace Proiect.Models
         /// </summary>
         /// <param name="index"></param>
         /// <param name="stud"></param>
-        public void UpdateStudent(int index, IStudent stud)
+        public void UpdateStudent(IStudent stud)
         {
             for(int i = 0; i < students.Count; i++)
             {
-                if(students[i].Index == index)
+                if(students[i].Index == stud.Index)
                 {
                     students[i] = stud;
                     return;
@@ -139,7 +148,11 @@ namespace Proiect.Models
         {
             return specs;
         }
-
+        
+        /// <summary>
+        /// Removes a specialiazation.
+        /// </summary>
+        /// <param name="index"></param>
         public void RemoveSpec(int index)
         {
             for(int it = 0; it < specs.Count; it++)
@@ -152,6 +165,11 @@ namespace Proiect.Models
             }
         }
 
+        /// <summary>
+        /// Get a specialization by index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public ISpecialization GetSpecById(int index)
         {
             foreach(Specialization spec in specs)
@@ -162,6 +180,11 @@ namespace Proiect.Models
             return null;
         }
 
+        /// <summary>
+        /// Get tests for a specialization by id.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public List<ITest> GetTests(int index)
         {
             foreach(Specialization spec in specs)
@@ -174,6 +197,10 @@ namespace Proiect.Models
             return null;
         }
 
+        /// <summary>
+        /// Add a specialization.
+        /// </summary>
+        /// <param name="specToAdd"></param>
         public void AddSpec(ISpecialization specToAdd)
         {
             if (specs.Count != 0)
@@ -183,6 +210,11 @@ namespace Proiect.Models
             specs.Add(specToAdd);
         }
 
+        /// <summary>
+        /// Remove a test from a specialization by indexes.
+        /// </summary>
+        /// <param name="specIndex"></param>
+        /// <param name="testIndex"></param>
         public void RemoveTest(int specIndex, int testIndex)
         {
             foreach(Specialization spec in specs)
@@ -195,6 +227,10 @@ namespace Proiect.Models
             }
         }
 
+        /// <summary>
+        /// Update a specialization.
+        /// </summary>
+        /// <param name="spec"></param>
         public void UpdateSpec(ISpecialization spec)
         {
             for(int it = 0; it < specs.Count; it++)
@@ -205,6 +241,21 @@ namespace Proiect.Models
                     return;
                 }
             }
+        }
+
+        /// <summary>
+        /// Determine if the object have a specific specialization by name.
+        /// </summary>
+        /// <param name="specName"></param>
+        /// <returns></returns>
+        public bool HaveSpec(string specName)
+        {
+            foreach(ISpecialization spec in specs)
+            {
+                if (spec.Nume.ToUpper() == specName.ToUpper())
+                    return true;
+            }
+            return false;
         }
     }
 }

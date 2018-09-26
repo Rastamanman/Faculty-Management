@@ -7,10 +7,10 @@ using Proiect.Controller;
 
 namespace Proiect.View
 {
-    interface IStudentView
+    interface IView
     {
         void LoadView();
-        void SetController(IStudentController cont);
+        void SetController(IController cont);
         void Enable();
         void Disable();
     }

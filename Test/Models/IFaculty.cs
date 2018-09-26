@@ -13,7 +13,7 @@ namespace Proiect.Models
         void RemoveStudent(int id);
         void AddStudent(IStudent stud);
         ISpecialization GetSpec(string name);
-        void UpdateStudent(int index, IStudent stud);
+        void UpdateStudent(IStudent stud);
         List<ISpecialization> GetSpecs();
         void RemoveSpec(int index);
         ISpecialization GetSpecById(int index);
@@ -22,5 +22,7 @@ namespace Proiect.Models
         void AddSpec(ISpecialization specToAdd);
         void RemoveTest(int specIndex, int testIndex);
         void UpdateSpec(ISpecialization spec);
+        bool HaveSpec(string specName);
+        int GetIndexForStud();
     }
 }

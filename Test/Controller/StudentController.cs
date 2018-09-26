@@ -10,10 +10,10 @@ namespace Proiect.Controller
 {
     class StudentController : IStudentController
     {
-        IStudentView view;
+        IView view;
         IStudent stud;
     
-        public StudentController(IStudentView vw, IStudent st = null)
+        public StudentController(IView vw, IStudent st = null)
         {
             view = vw;
             stud = st;

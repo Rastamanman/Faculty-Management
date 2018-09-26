@@ -93,6 +93,7 @@
             this.Controls.Add(this.addOpB);
             this.Name = "OptionV";
             this.Text = "OptionV";
+            this.Load += new System.EventHandler(this.OptionV_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

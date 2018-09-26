@@ -7,22 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proiect.Models;
+using Proiect.View;
 using Proiect.Controller;
 
 namespace Proiect.View
 {
-    public partial class OptionV : Form, IView
+    public partial class TestV : Form, IView
     {
-        IController controller;
-        FacultyV view;
+        IController cont;
+        ITest test;
+        FacultyV dest;
 
-        public OptionV(FacultyV st)
+        public TestV(FacultyV dest)
         {
+            this.dest = dest;
             InitializeComponent();
-            view = st;
         }
-
-        private void OptionV_Load(object sender, EventArgs e)
+        
+        private void TestV_Load(object sender, EventArgs e)
         {
 
         }
@@ -37,17 +40,18 @@ namespace Proiect.View
         /// </summary>
         public void ClearView()
         {
-            spec.Clear();
-            buget.Checked = false;
+            nume.Clear();
+            pondere.Clear();
+            req.Clear();
         }
 
         /// <summary>
-        /// Setter for the controller.
+        /// Setter for controller.
         /// </summary>
         /// <param name="cont"></param>
         public void SetController(IController cont)
         {
-            controller = cont;
+            this.cont = cont;
         }
 
         /// <summary>
@@ -69,41 +73,33 @@ namespace Proiect.View
         }
 
         /// <summary>
-        /// Add option to the list.
+        /// Load the test object from the view info.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void addOpB_Click(object sender, EventArgs e)
+        public void LoadTest()
         {
-            if (view.HaveSpec(spec.Text))
-                view.AddOp();
-            else
-                MessageBox.Show("Specialization does not exist!", "Specialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            test = new Proiect.Models.Test(nume.Text, Int32.Parse(pondere.Text), Int32.Parse(req.Text));
         }
 
         /// <summary>
-        /// Getter for the row for option list.
-        /// </summary>
-        /// <returns></returns>
-        public string[] GetRow()
-        {
-            string[] row = { "", spec.Text, "" };
-            if (buget.Checked == true)
-                row[2] = "Buget";
-            else
-                row[2] = "Taxa";
-            return row;
-        }
-
-        /// <summary>
-        /// Cancel the request.
+        /// Add the new test button function.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cancelB_Click(object sender, EventArgs e)
+        private void addTestB_Click(object sender, EventArgs e)
+        {
+            LoadTest();
+            dest.AddNewTest(test);
+            ClearView();
+        }
+
+        /// <summary>
+        /// Cancel button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
         {
             this.Disable();
         }
-
     }
 }

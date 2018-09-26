@@ -111,14 +111,23 @@ namespace Proiect.View
                 return;
             int selectedID = Int32.Parse(studentsList.SelectedItems[0].SubItems[0].Text);
             IStudent studToView = controller.GetStudById(selectedID);
+            LoadStudInfo(studToView);
+            
+        }
 
+        /// <summary>
+        /// Loads the student's info to the view.
+        /// </summary>
+        /// <param name="studToView"></param>
+        public void LoadStudInfo(IStudent studToView)
+        {
             index.Text = studToView.Index.ToString();
             nume.Text = studToView.Nume;
             prenume.Text = studToView.Prenume;
             cnp.Text = studToView.CNP.ToString();
             status.Text = studToView.Status();
             List<IOption> optiuni = studToView.Optiuni();
-            if(optiuni != null)
+            if (optiuni != null)
                 foreach (Option op in optiuni)
                 {
                     string[] row = { op.Index.ToString(), op.Nume, op.Tip, op.Nota().ToString() };
@@ -147,7 +156,7 @@ namespace Proiect.View
         /// <param name="e"></param>
         private void addStudB_Click(object sender, EventArgs e)
         {
-            IFacultyView studV = new StudV();
+            IFacultyView studV = new StudV(this);
             studV.SetController(controller);
             studV.Enable();
         }
@@ -160,8 +169,6 @@ namespace Proiect.View
         private void addOptionB_Click(object sender, EventArgs e)
         {
             opView = new OptionV(this);
-            IStudentController studentController = new StudentController(opView);
-            opView.SetController(studentController);
             opView.Enable();
         }
 
@@ -180,7 +187,7 @@ namespace Proiect.View
         }
 
         /// <summary>
-        /// Update the student by index.
+        /// Update the current student.
         /// </summary>
         /// <param name="index"></param>
         public void UpdateStudent(int index)
@@ -196,10 +203,10 @@ namespace Proiect.View
                 IOption op = new Option(spec, buget);
                 stud.addOption(op);
             }
-            controller.UpdateStudent(index, stud);
+            stud.Index = index;
+            controller.UpdateStudent(stud);
         }
-
-
+        
         /// <summary>
         /// Remove a option from the student.
         /// </summary>
@@ -213,9 +220,15 @@ namespace Proiect.View
             UpdateStudent(Int32.Parse(index.Text));
         }
 
+        /// <summary>
+        /// Add a new specialization button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addSpecB_Click(object sender, EventArgs e)
         {
-
+            SpecVcs newSpecView = new SpecVcs(controller.GetFac(), this);
+            newSpecView.Enable();
         }
 
         /// <summary>
@@ -225,19 +238,31 @@ namespace Proiect.View
         /// <param name="e"></param>
         private void viewSpecB_Click(object sender, EventArgs e)
         {
+            if (specList.SelectedItems.Count == 0)
+                return;
             int index = Int32.Parse(specList.SelectedItems[0].SubItems[0].Text);
             ISpecialization spec = controller.GetSpecById(index);
-            specID.Text = index.ToString();
+            LoadSpecInfo(spec);
+            
+        }
+
+        /// <summary>
+        /// Load specialization info.
+        /// </summary>
+        /// <param name="spec"></param>
+        public void LoadSpecInfo(ISpecialization spec)
+        {
+            specID.Text = spec.Index.ToString();
             specName.Text = spec.Nume;
             specSize.Text = spec.Locuri.ToString();
             specTaxSize.Text = spec.LocuriTaxa.ToString();
             specBugSize.Text = (spec.Locuri - spec.LocuriTaxa).ToString();
             testsList.Items.Clear();
-            List<ITest> tests = controller.GetTests(index);
-            if(tests != null)
-                foreach(Test t in tests)
+            List<ITest> tests = controller.GetTests(spec.Index);
+            if (tests != null)
+                foreach (Proiect.Models.Test t in tests)
                 {
-                    string[] row = { (testsList.Items.Count + 1).ToString(), t.Nume, t.Req.ToString(), t.Pondere.ToString()};
+                    string[] row = { (testsList.Items.Count + 1).ToString(), t.Nume, t.Req.ToString(), t.Pondere.ToString() };
                     testsList.Items.Add(new ListViewItem(row));
                 }
 
@@ -251,6 +276,8 @@ namespace Proiect.View
         /// <param name="e"></param>
         private void remSpecB_Click(object sender, EventArgs e)
         {
+            if (specList.SelectedItems.Count == 0)
+                return;
             int remSpecId = Int32.Parse(specList.SelectedItems[0].SubItems[0].Text);
             specList.Items.Remove(specList.SelectedItems[0]);
             controller.RemoveSpec(remSpecId);
@@ -262,6 +289,9 @@ namespace Proiect.View
         private void LoadCandidati()
         {
             candList.Items.Clear();
+            scandidati.Text = "Lista Candidati:";
+            if (specID.Text == ".")
+                return;
             List<IStudent> studs = controller.GetStudsFor(Int32.Parse(specID.Text));
             if(studs.Count != 0)
                 foreach(Student stud in studs)
@@ -291,7 +321,7 @@ namespace Proiect.View
         }
 
         /// <summary>
-        /// Update specialization.
+        /// Update specialization button function.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -305,12 +335,14 @@ namespace Proiect.View
         /// </summary>
         private void UpdateSpec()
         {
+            if (specID.Text == ".")
+                return;
             int indexOfSpec = Int32.Parse(specID.Text);
             ISpecialization spec = controller.GetSpecById(indexOfSpec);
             spec.ClearTests();
             foreach(ListViewItem itm in testsList.Items)
             {
-                ITest testToAdd = new Test(itm.SubItems[1].Text, Int32.Parse(itm.SubItems[3].Text), Int32.Parse(itm.SubItems[2].Text));
+                ITest testToAdd = new Proiect.Models.Test(itm.SubItems[1].Text, Int32.Parse(itm.SubItems[3].Text), Int32.Parse(itm.SubItems[2].Text));
                 testToAdd.Index = Int32.Parse(itm.SubItems[0].Text);
                 spec.AddTest(testToAdd);
             }
@@ -319,6 +351,68 @@ namespace Proiect.View
             spec.Nume = specName.Text;
 
             controller.UpdateSpec(spec);
+        }
+
+        /// <summary>
+        /// Load candidates in the list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void seeCandB_Click(object sender, EventArgs e)
+        {
+            LoadCandidati();
+        }
+
+        /// <summary>
+        /// Add a new specialization.
+        /// </summary>
+        /// <param name="newSpec"></param>
+        public void AddNewSpec(ISpecialization newSpec)
+        {
+            controller.AddSpec(newSpec);
+            LoadSpecs();
+            LoadSpecInfo(newSpec);
+        }
+
+        /// <summary>
+        /// Add a new Test to the tests list.
+        /// </summary>
+        /// <param name="newTest"></param>
+        public void AddNewTest(ITest newTest)
+        {
+            string[] row = { testsList.Items.Count + 1 + "", newTest.Nume, newTest.Req.ToString(), newTest.Pondere.ToString() };
+            testsList.Items.Add(new ListViewItem(row));
+        }
+
+        /// <summary>
+        /// Add new test button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addTestB_Click(object sender, EventArgs e)
+        {
+            TestV newTest = new TestV(this);
+            newTest.Enable();
+        }
+
+        /// <summary>
+        /// Determine if the faculty have a specific specialization.
+        /// </summary>
+        /// <param name="specName"></param>
+        /// <returns></returns>
+        public bool HaveSpec(string specName)
+        {
+            return controller.HaveSpec(specName);
+        }
+
+        /// <summary>
+        /// Add a new student.
+        /// </summary>
+        /// <param name="stud"></param>
+        public void AddStudent(IStudent stud)
+        {
+            controller.AddStudent(stud);
+            LoadStudInfo(stud);
         }
     }
 }

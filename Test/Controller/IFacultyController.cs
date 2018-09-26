@@ -15,7 +15,7 @@ namespace Proiect.Controller
         void RemoveStudent(int id);
         void AddStudent(IStudent stud);
         ISpecialization GetSpec(string name);
-        void UpdateStudent(int index, IStudent stud);
+        void UpdateStudent(IStudent stud);
         List<ISpecialization> GetSpecs();
         void RemoveSpec(int index);
         ISpecialization GetSpecById(int index);
@@ -23,5 +23,9 @@ namespace Proiect.Controller
         List<IStudent> GetStudsFor(int index);
         void RemoveTest(int specIndex, int testIndex);
         void UpdateSpec(ISpecialization spec);
+        void AddSpec(ISpecialization newSpec);
+        IFaculty GetFac();
+        bool HaveSpec(string specName);
+        int GetIndexForStud();
     }
 }

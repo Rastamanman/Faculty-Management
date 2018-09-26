@@ -20,18 +20,27 @@ namespace Proiect.Models
             pondere = p;
         }
 
+        /// <summary>
+        /// Get/Set for index;
+        /// </summary>
         public int Index
         {
             get { return index; }
             set { index = value; }
         }
 
+        /// <summary>
+        /// Get/Set for name.
+        /// </summary>
         public string Nume
         {
             get { return denumire; }
             set { denumire = value; }
         }
 
+        /// <summary>
+        /// Get/Set for requirement grade.
+        /// </summary>
         public int Req
         {
             get { return req; }

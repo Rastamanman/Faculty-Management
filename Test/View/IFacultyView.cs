@@ -13,6 +13,5 @@ namespace Proiect.View
         void SetController(IFacultyController cont);
         void Enable();
         void Disable();
-        void AddOp();
     }
 }

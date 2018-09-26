@@ -76,44 +76,118 @@ namespace Proiect.Controller
             return faculta.GetSpec(name);
         }
 
-        public void UpdateStudent(int index, IStudent stud)
+        /// <summary>
+        /// Update a student.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="stud"></param>
+        public void UpdateStudent(IStudent stud)
         {
-            faculta.UpdateStudent(index, stud);
+            faculta.UpdateStudent(stud);
         }
 
+        /// <summary>
+        /// Get all specializations.
+        /// </summary>
+        /// <returns></returns>
         public List<ISpecialization> GetSpecs()
         {
             return faculta.GetSpecs();
         }
 
+        /// <summary>
+        /// Remove a specialization by index.
+        /// </summary>
+        /// <param name="index"></param>
         public void RemoveSpec(int index)
         {
             faculta.RemoveSpec(index);
         }
 
+        /// <summary>
+        /// Get a specialization by id/index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public ISpecialization GetSpecById(int index)
         {
             return faculta.GetSpecById(index);
         }
 
+        /// <summary>
+        /// Get tests for a specialization by index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public List<ITest> GetTests(int index)
         {
             return faculta.GetTests(index);
         }
 
+        /// <summary>
+        /// Get students for a specialization by index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public List<IStudent> GetStudsFor(int index)
         {
             return faculta.GetStudsFor(index);
         }
 
+        /// <summary>
+        /// Remove a test from a specialization by indexes.
+        /// </summary>
+        /// <param name="specIndex"></param>
+        /// <param name="testIndex"></param>
         public void RemoveTest(int specIndex, int testIndex)
         {
             faculta.RemoveTest(specIndex, testIndex);
         }
 
+        /// <summary>
+        /// Updates a specialization.
+        /// </summary>
+        /// <param name="spec"></param>
         public void UpdateSpec(ISpecialization spec)
         {
             faculta.UpdateSpec(spec);
+        }
+
+        /// <summary>
+        /// Add a specialization.
+        /// </summary>
+        /// <param name="newSpec"></param>
+        public void AddSpec(ISpecialization newSpec)
+        {
+            faculta.AddSpec(newSpec);
+        }
+
+        /// <summary>
+        /// Getter for faculty object.
+        /// </summary>
+        /// <returns></returns>
+        public IFaculty GetFac()
+        {
+            return faculta;
+        }
+
+        /// <summary>
+        /// Determine if the faculty object have a specialization by name.
+        /// </summary>
+        /// <param name="specName"></param>
+        /// <returns></returns>
+        public bool HaveSpec(string specName)
+        {
+            return faculta.HaveSpec(specName);
+        }
+
+        /// <summary>
+        /// Computes the next index/ID for a new student.
+        /// </summary>
+        /// <returns></returns>
+        public int GetIndexForStud()
+        {
+            return faculta.GetIndexForStud();
         }
     }
 }

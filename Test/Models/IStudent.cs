@@ -18,5 +18,6 @@ namespace Proiect.Models
         string Status();
         List<IOption> Optiuni();
         void ClearOptions();
+        void UpdateOptions();
     }
 }

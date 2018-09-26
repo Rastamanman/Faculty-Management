@@ -69,18 +69,30 @@
       <DependentUpon>FacultyV.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IFacultyView.cs" />
-    <Compile Include="View\IStudentView.cs" />
+    <Compile Include="View\IView.cs" />
     <Compile Include="View\OptionV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\OptionV.Designer.cs">
       <DependentUpon>OptionV.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SpecV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SpecV.Designer.cs">
+      <DependentUpon>SpecV.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\StudV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\StudV.Designer.cs">
       <DependentUpon>StudV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TestV.Designer.cs">
+      <DependentUpon>TestV.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,8 +109,14 @@
     <EmbeddedResource Include="View\OptionV.resx">
       <DependentUpon>OptionV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SpecV.resx">
+      <DependentUpon>SpecV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\StudV.resx">
       <DependentUpon>StudV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TestV.resx">
+      <DependentUpon>TestV.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
