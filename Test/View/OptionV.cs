@@ -27,9 +27,12 @@ namespace Proiect.View
 
         }
 
+        /// <summary>
+        /// Load the view.
+        /// </summary>
         public void LoadView()
         {
-
+            this.Enable();
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace Proiect.View
         private void addOpB_Click(object sender, EventArgs e)
         {
             if (view.HaveSpec(spec.Text))
-                view.AddOp();
+                view.AddOp(this);
             else
                 MessageBox.Show("Specialization does not exist!", "Specialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

@@ -28,9 +28,12 @@ namespace Proiect.View
 
         }
 
+        /// <summary>
+        /// Load the view.
+        /// </summary>
         public void LoadView()
         {
-
+            this.Enable();
         }
 
         /// <summary>
@@ -96,8 +99,15 @@ namespace Proiect.View
             string name = tNume.Text;
             string prenume = tPrenume.Text;
             long cnp = long.Parse(tCnp.Text);
+            string sex;
+            if (mascOpt.Checked == true)
+                sex = "Masc";
+            else if (femOpt.Checked == true)
+                sex = "Fem";
+            else
+                sex = "Not Specified";
             List<IOption> optiuni = new List<IOption>();
-            IStudent studToAdd = new Student(name, prenume, cnp, optiuni);
+            IStudent studToAdd = new Student(name, prenume, cnp, sex, optiuni);
             studToAdd.Index = controller.GetIndexForStud();
             facV.AddStudent(studToAdd);
             ClearView();

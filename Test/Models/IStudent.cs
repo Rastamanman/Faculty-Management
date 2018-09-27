@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Proiect.Models;
 
 namespace Proiect.Models
 {
     public interface IStudent
     {
         void addOption(IOption option);
-        void Admis(bool buget);
+        void Admis(ISpecialization admSpec, bool buget);
         bool AttendAtSpec(ISpecialization spec);
         string Nume { get; set; }
         string Prenume { get; set; }
@@ -19,5 +20,7 @@ namespace Proiect.Models
         List<IOption> Optiuni();
         void ClearOptions();
         void UpdateOptions();
+        ISpecialization EnrolledSpec { get; set; }
+        string Sex { get; set; }
     }
 }

@@ -36,6 +36,9 @@
             this.tCnp = new System.Windows.Forms.TextBox();
             this.saveAndAdd = new System.Windows.Forms.Button();
             this.cancelB = new System.Windows.Forms.Button();
+            this.sex = new System.Windows.Forms.Label();
+            this.mascOpt = new System.Windows.Forms.RadioButton();
+            this.femOpt = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // snume
@@ -88,7 +91,7 @@
             // 
             // saveAndAdd
             // 
-            this.saveAndAdd.Location = new System.Drawing.Point(15, 111);
+            this.saveAndAdd.Location = new System.Drawing.Point(15, 128);
             this.saveAndAdd.Name = "saveAndAdd";
             this.saveAndAdd.Size = new System.Drawing.Size(310, 23);
             this.saveAndAdd.TabIndex = 4;
@@ -98,7 +101,7 @@
             // 
             // cancelB
             // 
-            this.cancelB.Location = new System.Drawing.Point(15, 140);
+            this.cancelB.Location = new System.Drawing.Point(15, 157);
             this.cancelB.Name = "cancelB";
             this.cancelB.Size = new System.Drawing.Size(310, 23);
             this.cancelB.TabIndex = 5;
@@ -106,16 +109,50 @@
             this.cancelB.UseVisualStyleBackColor = true;
             this.cancelB.Click += new System.EventHandler(this.cancelB_Click);
             // 
+            // sex
+            // 
+            this.sex.AutoSize = true;
+            this.sex.Location = new System.Drawing.Point(12, 101);
+            this.sex.Name = "sex";
+            this.sex.Size = new System.Drawing.Size(28, 13);
+            this.sex.TabIndex = 0;
+            this.sex.Text = "Sex:";
+            // 
+            // mascOpt
+            // 
+            this.mascOpt.AutoSize = true;
+            this.mascOpt.Location = new System.Drawing.Point(72, 99);
+            this.mascOpt.Name = "mascOpt";
+            this.mascOpt.Size = new System.Drawing.Size(51, 17);
+            this.mascOpt.TabIndex = 6;
+            this.mascOpt.TabStop = true;
+            this.mascOpt.Text = "Masc";
+            this.mascOpt.UseVisualStyleBackColor = true;
+            // 
+            // femOpt
+            // 
+            this.femOpt.AutoSize = true;
+            this.femOpt.Location = new System.Drawing.Point(174, 99);
+            this.femOpt.Name = "femOpt";
+            this.femOpt.Size = new System.Drawing.Size(45, 17);
+            this.femOpt.TabIndex = 6;
+            this.femOpt.TabStop = true;
+            this.femOpt.Text = "Fem";
+            this.femOpt.UseVisualStyleBackColor = true;
+            // 
             // StudV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 176);
+            this.ClientSize = new System.Drawing.Size(340, 198);
+            this.Controls.Add(this.femOpt);
+            this.Controls.Add(this.mascOpt);
             this.Controls.Add(this.cancelB);
             this.Controls.Add(this.saveAndAdd);
             this.Controls.Add(this.tCnp);
             this.Controls.Add(this.tPrenume);
             this.Controls.Add(this.tNume);
+            this.Controls.Add(this.sex);
             this.Controls.Add(this.scnp);
             this.Controls.Add(this.sprenume);
             this.Controls.Add(this.snume);
@@ -137,5 +174,8 @@
         public System.Windows.Forms.TextBox tPrenume;
         public System.Windows.Forms.TextBox tCnp;
         private System.Windows.Forms.Button cancelB;
+        private System.Windows.Forms.Label sex;
+        private System.Windows.Forms.RadioButton mascOpt;
+        private System.Windows.Forms.RadioButton femOpt;
     }
 }

@@ -12,22 +12,28 @@ namespace Proiect.Models
         private string nume;
         private string prenume;
         private long cnp;
+        private string sex;
         private List<IOption> optiuni;
         private bool admis;
         private bool buget;
-        private ISpecialization enroledSpec;
+        private ISpecialization enrolledSpec;
 
-        public Student(string n, string pren, long c, List<IOption> opt = null)
+        public Student(string n, string pren, long c, string s, List<IOption> opt = null, ISpecialization enrolled = null)
         {
             nume = n;
             prenume = pren;
             cnp = c;
+            sex = s;
             if (opt != null)
                 optiuni = opt;
             else
                 optiuni = new List<IOption>();
             admis = false;
             buget = false;
+            if (enrolled != null)
+                enrolledSpec = enrolled;
+            else
+                enrolledSpec = null;
         }
 
         /// <summary>
@@ -94,9 +100,10 @@ namespace Proiect.Models
         /// Setter for admis.
         /// </summary>
         /// <param name="buget"></param>
-        public void Admis(bool buget = false)
+        public void Admis(ISpecialization admSpec, bool buget = false)
         {
             admis = true;
+            enrolledSpec = admSpec;
             this.buget = buget;
         }
 
@@ -155,5 +162,24 @@ namespace Proiect.Models
                 op.Update();
             }
         }
+
+        /// <summary>
+        /// Get/Set for enroledSpec
+        /// </summary>
+        public ISpecialization EnrolledSpec
+        {
+            get { return enrolledSpec; }
+            set { enrolledSpec = value; }
+        }
+
+        /// <summary>
+        /// Get/Set for gender.
+        /// </summary>
+        public string Sex
+        {
+            get { return sex; }
+            set { sex = value; }
+        }
+
     }
 }

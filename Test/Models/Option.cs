@@ -117,7 +117,7 @@ namespace Proiect.Models
         /// Calculate the final grade for this option.
         /// </summary>
         /// <returns></returns>
-        public float Nota()
+        public double Nota()
         {
             float nota = 0;
             int pondereTotal = 0;

@@ -15,7 +15,6 @@ namespace Proiect.View
     public partial class FacultyV : Form, IFacultyView
     {
         private IFacultyController controller;
-        OptionV opView;
 
         public FacultyV()
         {
@@ -50,6 +49,33 @@ namespace Proiect.View
         {
             LoadStudents();
             LoadSpecs();
+        }
+
+        /// <summary>
+        /// Clears student info data.
+        /// </summary>
+        public void ClearStudentInfo()
+        {
+            index.Text = ".";
+            nume.Text = ".";
+            prenume.Text = ".";
+            cnp.Text = ".";
+            sex.Text = ".";
+            optiuniList.Items.Clear();
+        }
+
+        /// <summary>
+        /// Clears speciazliation info data.
+        /// </summary>
+        public void ClearSpecInfo()
+        {
+            specID.Text = ".";
+            specName.Text = ".";
+            specSize.Text = ".";
+            specTaxSize.Text = ".";
+            specBugSize.Text = ".";
+            testsList.Items.Clear();
+            candList.Items.Clear();
         }
 
         /// <summary>
@@ -121,10 +147,12 @@ namespace Proiect.View
         /// <param name="studToView"></param>
         public void LoadStudInfo(IStudent studToView)
         {
+            ClearStudentInfo();
             index.Text = studToView.Index.ToString();
             nume.Text = studToView.Nume;
             prenume.Text = studToView.Prenume;
             cnp.Text = studToView.CNP.ToString();
+            sex.Text = studToView.Sex;
             status.Text = studToView.Status();
             List<IOption> optiuni = studToView.Optiuni();
             if (optiuni != null)
@@ -158,7 +186,7 @@ namespace Proiect.View
         {
             IFacultyView studV = new StudV(this);
             studV.SetController(controller);
-            studV.Enable();
+            studV.LoadView();
         }
 
         /// <summary>
@@ -168,31 +196,39 @@ namespace Proiect.View
         /// <param name="e"></param>
         private void addOptionB_Click(object sender, EventArgs e)
         {
-            opView = new OptionV(this);
-            opView.Enable();
+            if (index.Text == ".")
+                return;
+            OptionV opView = new OptionV(this);
+            opView.LoadView();
         }
 
         /// <summary>
         /// Add the new option to the list and update the student.
         /// </summary>
-        public void AddOp()
+        public void AddOp(OptionV opView)
         {
             string[] row = opView.GetRow();
             if (optiuniList.Items.Count == 0)
                 row[0] = "1";
             else
                 row[0] = optiuniList.Items.Count + 1 + "";
+            foreach(ListViewItem itm in optiuniList.Items)
+            {
+                if (itm.SubItems[1].Text.ToUpper() == row[1].ToUpper() && itm.SubItems[2].Text.ToUpper() == row[2].ToUpper())
+                {
+                    MessageBox.Show("Option already exist!", "Option Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             optiuniList.Items.Add(new ListViewItem(row));
-            UpdateStudent(Int32.Parse(index.Text));
         }
 
         /// <summary>
         /// Update the current student.
         /// </summary>
         /// <param name="index"></param>
-        public void UpdateStudent(int index)
+        public void UpdateStudent(IStudent stud)
         {
-            IStudent stud = controller.GetStudById(index);
             stud.ClearOptions();
             foreach(ListViewItem itm in optiuniList.Items)
             {
@@ -203,7 +239,6 @@ namespace Proiect.View
                 IOption op = new Option(spec, buget);
                 stud.addOption(op);
             }
-            stud.Index = index;
             controller.UpdateStudent(stud);
         }
         
@@ -217,7 +252,6 @@ namespace Proiect.View
             if (optiuniList.SelectedItems.Count == 0)
                 return;
             optiuniList.Items.Remove(optiuniList.SelectedItems[0]);
-            UpdateStudent(Int32.Parse(index.Text));
         }
 
         /// <summary>
@@ -301,9 +335,28 @@ namespace Proiect.View
                 }
         }
 
+        /// <summary>
+        /// Load the list of the admited students for the specialization.
+        /// </summary>
         private void LoadAdmisi()
         {
-
+            candList.Items.Clear();
+            if (specID.Text == ".")
+                return;
+            scandidati.Text = "Lista Admisi:";
+            ISpecialization spec = controller.GetSpecById(Int32.Parse(specID.Text));
+            List<IStudent> studs = controller.GetAllStudents();
+            if (studs != null)
+            {
+                foreach (Student stud in studs)
+                {
+                    if (stud.Status().ToUpper() == "INTRAT" && stud.EnrolledSpec == spec)
+                    {
+                        string[] row = { stud.Index.ToString(), stud.Nume, stud.Prenume };
+                        candList.Items.Add(new ListViewItem(row));
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -351,6 +404,17 @@ namespace Proiect.View
             spec.Nume = specName.Text;
 
             controller.UpdateSpec(spec);
+        }
+
+        /// <summary>
+        /// Update a spec from exterior source.
+        /// </summary>
+        /// <param name="specToUpdate"></param>
+        public void UpdateSpec(ISpecialization specToUpdate)
+        {
+            if (specToUpdate == null)
+                return;
+            controller.UpdateSpec(specToUpdate);
         }
 
         /// <summary>
@@ -413,6 +477,57 @@ namespace Proiect.View
         {
             controller.AddStudent(stud);
             LoadStudInfo(stud);
+        }
+
+        /// <summary>
+        /// Load admited students button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void seeAdmB_Click(object sender, EventArgs e)
+        {
+            LoadAdmisi();
+        }
+
+        /// <summary>
+        /// Save changes for student button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveChB_Click(object sender, EventArgs e)
+        {
+            if (index.Text == ".")
+                return;
+            IStudent studentToUpdate = controller.GetStudById(Int32.Parse(index.Text));
+            UpdateStudent(studentToUpdate);
+        }
+
+        /// <summary>
+        /// Edit student button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editStudB_Click(object sender, EventArgs e)
+        {
+            if (index.Text == ".")
+                return;
+            IStudent studToEdit = controller.GetStudById(Int32.Parse(index.Text));
+            IView editView = new EditStudV(studToEdit, this);
+            editView.LoadView();
+        }
+
+        /// <summary>
+        /// Edit Specialization button function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editSpecB_Click(object sender, EventArgs e)
+        {
+            if (specID.Text == ".")
+                return;
+            ISpecialization specToEdit = controller.GetSpecById(Int32.Parse(specID.Text));
+            IView editView = new EditSpecV(specToEdit, this);
+            editView.LoadView();
         }
     }
 }

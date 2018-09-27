@@ -23,10 +23,10 @@ namespace Proiect
             IFacultyView mainView = new FacultyV();
 
             Faculty fac = new Faculty("Facultatea 51");
-            Student stud = new Student("Alien", "Jupiterov", 3121212157899, null);
-            Student stud2 = new Student("Domnul", "Annunaki", 4020202135445, null);
-            fac.AddStudent(stud);
-            fac.AddStudent(stud2);
+            Student stud = new Student("Alien", "Jupiterov", 3121212157899, "Masc", null);
+            Student stud2 = new Student("Domnul", "Annunaki", 4020202135445, "Masc", null);
+            
+            
             Test test1 = new Test("Examen", 30, 5);
             Test test2 = new Test("Nota Bac", 70);
             List<ITest> teste = new List<ITest>();
@@ -39,6 +39,9 @@ namespace Proiect
             Specialization spec2 = new Specialization("Aero Dinamics", fac, 15, 5, teste);
             fac.AddSpec(spec1);
             fac.AddSpec(spec2);
+            stud2.Admis(spec2, true);
+            fac.AddStudent(stud);
+            fac.AddStudent(stud2);
 
             IFacultyController mainController = new FacultyController(mainView, fac);
 
