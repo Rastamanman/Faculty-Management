@@ -529,5 +529,59 @@ namespace Proiect.View
             IView editView = new EditSpecV(specToEdit, this);
             editView.LoadView();
         }
+
+        /// <summary>
+        /// Edit option butto function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editOpB_Click(object sender, EventArgs e)
+        {
+            if (optiuniList.SelectedItems.Count == 0)
+                return;
+            ListViewItem opToEdit = optiuniList.SelectedItems[0];
+            IView editView = new EditOptionV(opToEdit, this);
+            editView.LoadView();
+        }
+
+        /// <summary>
+        /// Update a option in option list.
+        /// </summary>
+        /// <param name="opToUpdate"></param>
+        public void UpdateOption(ListViewItem opToUpdate)
+        {
+            ListViewItem opToRemove = null;
+            // verify if the new option already exist.
+            for (int it = 0; it < optiuniList.Items.Count; it++)
+            {
+                if (optiuniList.Items[it].SubItems[1].Text.ToUpper() == opToUpdate.SubItems[1].Text.ToUpper()
+                    && optiuniList.Items[it].SubItems[2].Text.ToUpper() == opToUpdate.SubItems[2].Text.ToUpper())
+                {
+                    if (optiuniList.Items[it].SubItems[0].Text.ToUpper() != opToUpdate.SubItems[0].Text.ToUpper())
+                    {
+                        opToRemove = optiuniList.Items[it];
+                        RemoveOption(opToRemove);
+                    }
+                    else
+                        return;
+                }
+            }
+            for(int it = 0; it < optiuniList.Items.Count; it++)
+            {
+                if(optiuniList.Items[it].SubItems[0].Text.ToUpper() == opToUpdate.SubItems[0].Text.ToUpper())
+                {
+                    optiuniList.Items[it] = opToUpdate;
+                    return;
+                }
+            }
+        }
+
+        public void RemoveOption(ListViewItem opToRemove)
+        {
+            if (opToRemove == null)
+                return;
+            optiuniList.Items.Remove(opToRemove);
+        }
+        
     }
 }

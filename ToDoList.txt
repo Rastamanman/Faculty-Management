@@ -1,11 +1,18 @@
 TODO:
-   -RunExams
-       -- add grades for every student
-   -sort by final grade
-   -verificari erori input
-   -add edit option/test
-   -add comments   
-   -fix bug : can add an existing spec/test
-   -fix bug: can't add tax option
-   -open view's at mouse pointer
-     
+   
+	-RunExams
+
+		-- add grades for every student
+
+	-sort by final grade
+
+	-verificari erori input
+
+	-add edit option/test
+
+	-add comments
+	-fix bug : can add an existing spec/test
+	-fix bug: can't add tax option
+
+	-fix big: genereaza nota la fiecare update al studentului
+	-open view's at mouse pointer

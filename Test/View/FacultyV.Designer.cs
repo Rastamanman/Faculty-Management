@@ -38,6 +38,8 @@
             this.remStudB = new System.Windows.Forms.Button();
             this.viewStudB = new System.Windows.Forms.Button();
             this.studentInfo = new System.Windows.Forms.Panel();
+            this.editStudB = new System.Windows.Forms.Button();
+            this.saveChB = new System.Windows.Forms.Button();
             this.optiuniList = new System.Windows.Forms.ListView();
             this.idOp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numeOp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,8 +48,10 @@
             this.removeOptionB = new System.Windows.Forms.Button();
             this.addOptionB = new System.Windows.Forms.Button();
             this.cnp = new System.Windows.Forms.Label();
+            this.sex = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.Label();
             this.soptiuni = new System.Windows.Forms.Label();
+            this.ssex = new System.Windows.Forms.Label();
             this.sstatus = new System.Windows.Forms.Label();
             this.scnp = new System.Windows.Forms.Label();
             this.sprenume = new System.Windows.Forms.Label();
@@ -62,6 +66,7 @@
             this.idSpecL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numeSpecL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.specInfo = new System.Windows.Forms.Panel();
+            this.editSpecB = new System.Windows.Forms.Button();
             this.candList = new System.Windows.Forms.ListView();
             this.idStud = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numeCand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,11 +97,7 @@
             this.addSpecB = new System.Windows.Forms.Button();
             this.viewSpecB = new System.Windows.Forms.Button();
             this.sspecs = new System.Windows.Forms.Label();
-            this.ssex = new System.Windows.Forms.Label();
-            this.sex = new System.Windows.Forms.Label();
-            this.saveChB = new System.Windows.Forms.Button();
-            this.editStudB = new System.Windows.Forms.Button();
-            this.editSpecB = new System.Windows.Forms.Button();
+            this.editOpB = new System.Windows.Forms.Button();
             this.mainTab.SuspendLayout();
             this.students.SuspendLayout();
             this.studentInfo.SuspendLayout();
@@ -190,6 +191,7 @@
             // 
             // studentInfo
             // 
+            this.studentInfo.Controls.Add(this.editOpB);
             this.studentInfo.Controls.Add(this.editStudB);
             this.studentInfo.Controls.Add(this.saveChB);
             this.studentInfo.Controls.Add(this.optiuniList);
@@ -212,6 +214,26 @@
             this.studentInfo.Name = "studentInfo";
             this.studentInfo.Size = new System.Drawing.Size(410, 358);
             this.studentInfo.TabIndex = 0;
+            // 
+            // editStudB
+            // 
+            this.editStudB.Location = new System.Drawing.Point(16, 332);
+            this.editStudB.Name = "editStudB";
+            this.editStudB.Size = new System.Drawing.Size(378, 23);
+            this.editStudB.TabIndex = 5;
+            this.editStudB.Text = "Edit Student Info";
+            this.editStudB.UseVisualStyleBackColor = true;
+            this.editStudB.Click += new System.EventHandler(this.editStudB_Click);
+            // 
+            // saveChB
+            // 
+            this.saveChB.Location = new System.Drawing.Point(308, 303);
+            this.saveChB.Name = "saveChB";
+            this.saveChB.Size = new System.Drawing.Size(86, 23);
+            this.saveChB.TabIndex = 4;
+            this.saveChB.Text = "Save Changes";
+            this.saveChB.UseVisualStyleBackColor = true;
+            this.saveChB.Click += new System.EventHandler(this.saveChB_Click);
             // 
             // optiuniList
             // 
@@ -248,9 +270,9 @@
             // 
             // removeOptionB
             // 
-            this.removeOptionB.Location = new System.Drawing.Point(136, 303);
+            this.removeOptionB.Location = new System.Drawing.Point(116, 304);
             this.removeOptionB.Name = "removeOptionB";
-            this.removeOptionB.Size = new System.Drawing.Size(133, 23);
+            this.removeOptionB.Size = new System.Drawing.Size(90, 23);
             this.removeOptionB.TabIndex = 2;
             this.removeOptionB.Text = "Remove Option";
             this.removeOptionB.UseVisualStyleBackColor = true;
@@ -260,7 +282,7 @@
             // 
             this.addOptionB.Location = new System.Drawing.Point(16, 304);
             this.addOptionB.Name = "addOptionB";
-            this.addOptionB.Size = new System.Drawing.Size(114, 23);
+            this.addOptionB.Size = new System.Drawing.Size(94, 23);
             this.addOptionB.TabIndex = 2;
             this.addOptionB.Text = "Add New Option";
             this.addOptionB.UseVisualStyleBackColor = true;
@@ -274,6 +296,15 @@
             this.cnp.Size = new System.Drawing.Size(10, 13);
             this.cnp.TabIndex = 0;
             this.cnp.Text = ".";
+            // 
+            // sex
+            // 
+            this.sex.AutoSize = true;
+            this.sex.Location = new System.Drawing.Point(70, 103);
+            this.sex.Name = "sex";
+            this.sex.Size = new System.Drawing.Size(10, 13);
+            this.sex.TabIndex = 0;
+            this.sex.Text = ".";
             // 
             // status
             // 
@@ -292,6 +323,15 @@
             this.soptiuni.Size = new System.Drawing.Size(68, 13);
             this.soptiuni.TabIndex = 0;
             this.soptiuni.Text = "Lista Optiuni:";
+            // 
+            // ssex
+            // 
+            this.ssex.AutoSize = true;
+            this.ssex.Location = new System.Drawing.Point(12, 103);
+            this.ssex.Name = "ssex";
+            this.ssex.Size = new System.Drawing.Size(28, 13);
+            this.ssex.TabIndex = 0;
+            this.ssex.Text = "Sex:";
             // 
             // sstatus
             // 
@@ -438,6 +478,16 @@
             this.specInfo.Name = "specInfo";
             this.specInfo.Size = new System.Drawing.Size(445, 365);
             this.specInfo.TabIndex = 3;
+            // 
+            // editSpecB
+            // 
+            this.editSpecB.Location = new System.Drawing.Point(360, 8);
+            this.editSpecB.Name = "editSpecB";
+            this.editSpecB.Size = new System.Drawing.Size(75, 66);
+            this.editSpecB.TabIndex = 4;
+            this.editSpecB.Text = "Edit Spec";
+            this.editSpecB.UseVisualStyleBackColor = true;
+            this.editSpecB.Click += new System.EventHandler(this.editSpecB_Click);
             // 
             // candList
             // 
@@ -700,53 +750,15 @@
             this.sspecs.TabIndex = 1;
             this.sspecs.Text = "Specializari:";
             // 
-            // ssex
+            // editOpB
             // 
-            this.ssex.AutoSize = true;
-            this.ssex.Location = new System.Drawing.Point(12, 103);
-            this.ssex.Name = "ssex";
-            this.ssex.Size = new System.Drawing.Size(28, 13);
-            this.ssex.TabIndex = 0;
-            this.ssex.Text = "Sex:";
-            // 
-            // sex
-            // 
-            this.sex.AutoSize = true;
-            this.sex.Location = new System.Drawing.Point(70, 103);
-            this.sex.Name = "sex";
-            this.sex.Size = new System.Drawing.Size(10, 13);
-            this.sex.TabIndex = 0;
-            this.sex.Text = ".";
-            // 
-            // saveChB
-            // 
-            this.saveChB.Location = new System.Drawing.Point(275, 303);
-            this.saveChB.Name = "saveChB";
-            this.saveChB.Size = new System.Drawing.Size(119, 23);
-            this.saveChB.TabIndex = 4;
-            this.saveChB.Text = "Save Changes";
-            this.saveChB.UseVisualStyleBackColor = true;
-            this.saveChB.Click += new System.EventHandler(this.saveChB_Click);
-            // 
-            // editStudB
-            // 
-            this.editStudB.Location = new System.Drawing.Point(16, 332);
-            this.editStudB.Name = "editStudB";
-            this.editStudB.Size = new System.Drawing.Size(378, 23);
-            this.editStudB.TabIndex = 5;
-            this.editStudB.Text = "Edit Student Info";
-            this.editStudB.UseVisualStyleBackColor = true;
-            this.editStudB.Click += new System.EventHandler(this.editStudB_Click);
-            // 
-            // editSpecB
-            // 
-            this.editSpecB.Location = new System.Drawing.Point(360, 8);
-            this.editSpecB.Name = "editSpecB";
-            this.editSpecB.Size = new System.Drawing.Size(75, 66);
-            this.editSpecB.TabIndex = 4;
-            this.editSpecB.Text = "Edit Spec";
-            this.editSpecB.UseVisualStyleBackColor = true;
-            this.editSpecB.Click += new System.EventHandler(this.editSpecB_Click);
+            this.editOpB.Location = new System.Drawing.Point(212, 304);
+            this.editOpB.Name = "editOpB";
+            this.editOpB.Size = new System.Drawing.Size(90, 23);
+            this.editOpB.TabIndex = 6;
+            this.editOpB.Text = "Edit Option";
+            this.editOpB.UseVisualStyleBackColor = true;
+            this.editOpB.Click += new System.EventHandler(this.editOpB_Click);
             // 
             // FacultyV
             // 
@@ -841,5 +853,6 @@
         private System.Windows.Forms.Button saveChB;
         private System.Windows.Forms.Button editStudB;
         private System.Windows.Forms.Button editSpecB;
+        private System.Windows.Forms.Button editOpB;
     }
 }
