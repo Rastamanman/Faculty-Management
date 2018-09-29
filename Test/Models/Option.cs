@@ -18,8 +18,7 @@ namespace Proiect.Models
         {
             this.spec = spec;
             this.buget = buget;
-            requirements = spec.GetTests();
-            results = new int[requirements.Count];
+            Update();
             GenerateResults();
         }
 

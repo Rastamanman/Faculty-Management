@@ -17,5 +17,7 @@ namespace Proiect.Models
         void AddTest(ITest testToAdd);
         void RemoveTest(int testIndex);
         void ClearTests();
+        void AddOption(IOption opToAdd);
+        void RemoveOption(IOption opToRemove);
     }
 }

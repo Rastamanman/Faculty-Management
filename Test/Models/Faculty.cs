@@ -257,5 +257,16 @@ namespace Proiect.Models
             }
             return false;
         }
+
+        public List<IStudent> GetStudentsFor(ISpecialization spec)
+        {
+            List<IStudent> studs = new List<IStudent>();
+            foreach(IStudent stud in students)
+            {
+                if (stud.AttendAtSpec(spec))
+                    studs.Add(stud);
+            }
+            return studs;
+        }
     }
 }

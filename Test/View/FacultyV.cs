@@ -74,6 +74,7 @@ namespace Proiect.View
             specSize.Text = ".";
             specTaxSize.Text = ".";
             specBugSize.Text = ".";
+            enrolledSpec.Text = ".";
             testsList.Items.Clear();
             candList.Items.Clear();
         }
@@ -90,6 +91,7 @@ namespace Proiect.View
                 {
                     string[] row = { spec.Index.ToString(), spec.Nume };
                     specList.Items.Add(new ListViewItem(row));
+                    specBox.Items.Add(spec.ToString());
                 }
         }
 
@@ -154,6 +156,10 @@ namespace Proiect.View
             cnp.Text = studToView.CNP.ToString();
             sex.Text = studToView.Sex;
             status.Text = studToView.Status();
+            if (status.Text.ToUpper() == "INTRAT")
+                enrolledSpec.Text = studToView.EnrolledSpec.Nume + " - " + studToView.BugetToString();
+            else
+                enrolledSpec.Text = "";
             List<IOption> optiuni = studToView.Optiuni();
             if (optiuni != null)
                 foreach (Option op in optiuni)
@@ -323,14 +329,14 @@ namespace Proiect.View
         private void LoadCandidati()
         {
             candList.Items.Clear();
-            scandidati.Text = "Lista Candidati:";
-            if (specID.Text == ".")
+            if (specBox.Items.Count == 0)
                 return;
-            List<IStudent> studs = controller.GetStudsFor(Int32.Parse(specID.Text));
+            ISpecialization spec = controller.GetSpec(specBox.SelectedItem.ToString());
+            List<IStudent> studs = controller.GetStudentsFor(spec);
             if(studs.Count != 0)
                 foreach(Student stud in studs)
                 {
-                    string[] row = { stud.Index.ToString(), stud.Nume, stud.Prenume };
+                    string[] row = { stud.Index.ToString(), stud.Nume, stud.Prenume};
                     candList.Items.Add(new ListViewItem(row));
                 }
         }
@@ -341,10 +347,10 @@ namespace Proiect.View
         private void LoadAdmisi()
         {
             candList.Items.Clear();
-            if (specID.Text == ".")
+            if (specBox.Items.Count == 0)
                 return;
             scandidati.Text = "Lista Admisi:";
-            ISpecialization spec = controller.GetSpecById(Int32.Parse(specID.Text));
+            ISpecialization spec = controller.GetSpec(specBox.SelectedItem.ToString());
             List<IStudent> studs = controller.GetAllStudents();
             if (studs != null)
             {
@@ -352,7 +358,7 @@ namespace Proiect.View
                 {
                     if (stud.Status().ToUpper() == "INTRAT" && stud.EnrolledSpec == spec)
                     {
-                        string[] row = { stud.Index.ToString(), stud.Nume, stud.Prenume };
+                        string[] row = { stud.Index.ToString(), stud.Nume, stud.Prenume, "" };
                         candList.Items.Add(new ListViewItem(row));
                     }
                 }
@@ -418,16 +424,6 @@ namespace Proiect.View
         }
 
         /// <summary>
-        /// Load candidates in the list.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void seeCandB_Click(object sender, EventArgs e)
-        {
-            LoadCandidati();
-        }
-
-        /// <summary>
         /// Add a new specialization.
         /// </summary>
         /// <param name="newSpec"></param>
@@ -477,16 +473,6 @@ namespace Proiect.View
         {
             controller.AddStudent(stud);
             LoadStudInfo(stud);
-        }
-
-        /// <summary>
-        /// Load admited students button function.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void seeAdmB_Click(object sender, EventArgs e)
-        {
-            LoadAdmisi();
         }
 
         /// <summary>
@@ -582,6 +568,15 @@ namespace Proiect.View
                 return;
             optiuniList.Items.Remove(opToRemove);
         }
-        
+
+        private void seeAdmB_Click_1(object sender, EventArgs e)
+        {
+            LoadAdmisi();
+        }
+
+        private void seeCandB_Click_1(object sender, EventArgs e)
+        {
+            LoadCandidati();
+        }
     }
 }

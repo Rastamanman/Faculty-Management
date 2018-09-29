@@ -13,22 +13,29 @@ namespace Proiect.Models
         private int locuri;
         private int locuriTaxa;
         private List<ITest> teste;
+        private List<IOption> optiuni;
         private List<IStudent> candidati;
         private List<IStudent> admisi;
         private IFaculty facultate;
 
-        public Specialization(string n,IFaculty fac, int loc = 20, int locTax = 10, List<ITest> t = null, List<IStudent> cand = null)
+        public Specialization(string n,IFaculty fac, int loc = 20, int locTax = 10, List<ITest> t = null, List<IStudent> cand = null, List<IOption> opt = null)
         {
             name = n;
+            facultate = fac;
+            locuri = loc;
+            locuriTaxa = locTax;
             if (t == null)
                 teste = new List<ITest>();
             else
                 teste = t;
-            locuri = loc;
-            teste = t;
-            candidati = cand;
-            locuriTaxa = locTax;
-            facultate = fac;
+            if (cand == null)
+                candidati = new List<IStudent>();
+            else
+                candidati = cand;
+            if (opt == null)
+                optiuni = new List<IOption>();
+            else
+                optiuni = opt;
         }
 
         /// <summary>
@@ -117,6 +124,42 @@ namespace Proiect.Models
         {
             if(teste != null)
                 teste.Clear();
+        }
+
+        public bool HaveOption(IOption opToCheck)
+        {
+            foreach(IOption op in optiuni)
+            {
+                if (op == opToCheck)
+                    return true;
+            }
+            return false;
+        }
+
+        public void AddOption(IOption opToAdd)
+        {
+            if(HaveOption(opToAdd) == false)
+            {
+                optiuni.Add(opToAdd);
+            }
+        }
+
+        public void RemoveOption(IOption opToRemove)
+        {
+            if(HaveOption(opToRemove))
+            {
+                optiuni.Remove(opToRemove);
+            }
+        }
+
+        public void UpdateOption(IOption opToUpdate)
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return Nume;
         }
     }
 }

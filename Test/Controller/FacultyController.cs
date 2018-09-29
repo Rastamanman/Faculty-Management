@@ -189,5 +189,10 @@ namespace Proiect.Controller
         {
             return faculta.GetIndexForStud();
         }
+
+        public List<IStudent> GetStudentsFor(ISpecialization spec)
+        {
+            return faculta.GetStudentsFor(spec);
+        }
     }
 }

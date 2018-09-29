@@ -22,5 +22,6 @@ namespace Proiect.Models
         void UpdateOptions();
         ISpecialization EnrolledSpec { get; set; }
         string Sex { get; set; }
+        string BugetToString();
     }
 }

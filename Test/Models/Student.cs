@@ -181,5 +181,15 @@ namespace Proiect.Models
             set { sex = value; }
         }
 
+        /// <summary>
+        /// Get buget to string.
+        /// </summary>
+        /// <returns></returns>
+        public string BugetToString()
+        {
+            if (buget == true)
+                return "Buget";
+            return "Taxa";
+        }
     }
 }
