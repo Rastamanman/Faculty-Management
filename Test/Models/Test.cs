@@ -52,7 +52,7 @@ namespace Proiect.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool passed(int value)
+        public bool passed(double value)
         {
             return value >= req;
         }

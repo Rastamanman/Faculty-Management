@@ -28,5 +28,6 @@ namespace Proiect.Controller
         bool HaveSpec(string specName);
         int GetIndexForStud();
         List<IStudent> GetStudentsFor(ISpecialization spec);
+        List<IOption> GetOptions();
     }
 }

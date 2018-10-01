@@ -19,5 +19,6 @@ namespace Proiect.Models
         void ClearTests();
         void AddOption(IOption opToAdd);
         void RemoveOption(IOption opToRemove);
+        List<IOption> Optiuni { get; set; }
     }
 }

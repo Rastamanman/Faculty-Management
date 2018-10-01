@@ -268,5 +268,19 @@ namespace Proiect.Models
             }
             return studs;
         }
+
+        public List<IOption> GetOptions()
+        {
+            List<IOption> listToReturn = new List<IOption>();
+            foreach(ISpecialization spec in specs)
+            {
+                List<IOption> specOpts = spec.Optiuni;
+                foreach(IOption newOpt in specOpts)
+                {
+                    listToReturn.Add(newOpt);
+                }
+            }
+            return listToReturn;
+        }
     }
 }

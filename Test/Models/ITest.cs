@@ -10,7 +10,7 @@ namespace Proiect.Models
     {
         int Req { get; set; }
         string Nume { get; set; }
-        bool passed(int value);
+        bool passed(double value);
         int Pondere { get; set; }
         int Index { get; set; }
     }

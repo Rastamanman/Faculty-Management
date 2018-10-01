@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proiect.Controller;
+using Proiect.Models;
 
 namespace Proiect.View
 {
@@ -32,7 +33,17 @@ namespace Proiect.View
         /// </summary>
         public void LoadView()
         {
+            UpdateInfo();
             this.Enable();
+        }
+
+        public void UpdateInfo()
+        {
+            List<IOption> opts = view.GetOptions();
+            foreach(IOption opt in opts)
+            {
+                optionsList.Items.Add(opt.ToString());
+            }
         }
 
         /// <summary>

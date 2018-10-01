@@ -578,5 +578,10 @@ namespace Proiect.View
         {
             LoadCandidati();
         }
+
+        public List<IOption> GetOptions()
+        {
+            return controller.GetOptions();
+        }
     }
 }

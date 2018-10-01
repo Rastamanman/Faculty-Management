@@ -25,5 +25,6 @@ namespace Proiect.Models
         bool HaveSpec(string specName);
         int GetIndexForStud();
         List<IStudent> GetStudentsFor(ISpecialization spec);
+        List<IOption> GetOptions();
     }
 }

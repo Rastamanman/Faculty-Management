@@ -51,7 +51,9 @@
     <Compile Include="Controller\IStudentController.cs" />
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\IFaculty.cs" />
+    <Compile Include="Models\IGrade.cs" />
     <Compile Include="Models\IOption.cs" />
     <Compile Include="Models\ISpecialization.cs" />
     <Compile Include="Models\IStudent.cs" />

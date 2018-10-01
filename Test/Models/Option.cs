@@ -12,7 +12,7 @@ namespace Proiect.Models
         private ISpecialization spec;
         private bool buget;
         private List<ITest> requirements;
-        private int[] results;
+        private List<IGrade> results;
 
         public Option(ISpecialization spec, bool buget)
         {
@@ -28,7 +28,7 @@ namespace Proiect.Models
         public void Update()
         {
             requirements = spec.GetTests();
-            results = new int[requirements.Count];
+            results = new List<IGrade>();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Proiect.Models
             bool passed = true;
             foreach(ITest test in requirements)
             {
-                passed = passed && test.passed(results[iterator]);
+                passed = passed && test.passed(results[iterator].Nota);
                 iterator++;
             }
             return passed;
@@ -81,7 +81,7 @@ namespace Proiect.Models
             int iterator = 0;
             foreach (ITest test in requirements)
             {
-                results[iterator] = rnd.Next(10) + 1;
+                results[iterator].Nota = rnd.NextDouble() * 10 + 1;
                 iterator++;
             }
         }
@@ -118,15 +118,15 @@ namespace Proiect.Models
         /// <returns></returns>
         public double Nota()
         {
-            float nota = 0;
+            double nota = 0;
             int pondereTotal = 0;
 
             for(int it = 0; it < requirements.Count; it++)
             {
-                if(requirements[it].passed(results[it]))
+                if(requirements[it].passed(results[it].Nota))
                 {
                     pondereTotal += requirements[it].Pondere;
-                    nota += results[it] * requirements[it].Pondere / 100;
+                    nota += results[it].Nota * requirements[it].Pondere / 100;
                 }
             }
             return (nota * 100) / pondereTotal;

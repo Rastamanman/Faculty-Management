@@ -33,11 +33,12 @@
             this.sspec = new System.Windows.Forms.Label();
             this.buget = new System.Windows.Forms.CheckBox();
             this.cancelB = new System.Windows.Forms.Button();
+            this.optionsList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // addOpB
             // 
-            this.addOpB.Location = new System.Drawing.Point(15, 58);
+            this.addOpB.Location = new System.Drawing.Point(17, 93);
             this.addOpB.Name = "addOpB";
             this.addOpB.Size = new System.Drawing.Size(124, 23);
             this.addOpB.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // spec
             // 
-            this.spec.Location = new System.Drawing.Point(85, 9);
+            this.spec.Location = new System.Drawing.Point(87, 44);
             this.spec.Name = "spec";
             this.spec.Size = new System.Drawing.Size(204, 20);
             this.spec.TabIndex = 1;
@@ -55,7 +56,7 @@
             // sspec
             // 
             this.sspec.AutoSize = true;
-            this.sspec.Location = new System.Drawing.Point(12, 12);
+            this.sspec.Location = new System.Drawing.Point(14, 47);
             this.sspec.Name = "sspec";
             this.sspec.Size = new System.Drawing.Size(67, 13);
             this.sspec.TabIndex = 2;
@@ -64,7 +65,7 @@
             // buget
             // 
             this.buget.AutoSize = true;
-            this.buget.Location = new System.Drawing.Point(85, 35);
+            this.buget.Location = new System.Drawing.Point(87, 70);
             this.buget.Name = "buget";
             this.buget.Size = new System.Drawing.Size(54, 17);
             this.buget.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             // cancelB
             // 
-            this.cancelB.Location = new System.Drawing.Point(145, 58);
+            this.cancelB.Location = new System.Drawing.Point(147, 93);
             this.cancelB.Name = "cancelB";
             this.cancelB.Size = new System.Drawing.Size(137, 23);
             this.cancelB.TabIndex = 4;
@@ -81,11 +82,20 @@
             this.cancelB.UseVisualStyleBackColor = true;
             this.cancelB.Click += new System.EventHandler(this.cancelB_Click);
             // 
+            // optionsList
+            // 
+            this.optionsList.FormattingEnabled = true;
+            this.optionsList.Location = new System.Drawing.Point(87, 13);
+            this.optionsList.Name = "optionsList";
+            this.optionsList.Size = new System.Drawing.Size(204, 21);
+            this.optionsList.TabIndex = 5;
+            // 
             // OptionV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 89);
+            this.ClientSize = new System.Drawing.Size(294, 122);
+            this.Controls.Add(this.optionsList);
             this.Controls.Add(this.cancelB);
             this.Controls.Add(this.buget);
             this.Controls.Add(this.sspec);
@@ -106,5 +116,6 @@
         private System.Windows.Forms.Label sspec;
         private System.Windows.Forms.CheckBox buget;
         private System.Windows.Forms.Button cancelB;
+        private System.Windows.Forms.ComboBox optionsList;
     }
 }

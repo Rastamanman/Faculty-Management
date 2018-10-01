@@ -47,6 +47,12 @@ namespace Proiect.Models
             set { index = value; }
         }
 
+        public List<IOption> Optiuni
+        {
+            get { return optiuni; }
+            set { optiuni = value; }
+        }
+
         /// <summary>
         /// Get/Set for name.
         /// </summary>

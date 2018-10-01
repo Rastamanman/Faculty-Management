@@ -194,5 +194,10 @@ namespace Proiect.Controller
         {
             return faculta.GetStudentsFor(spec);
         }
+
+        public List<IOption> GetOptions()
+        {
+            return faculta.GetOptions();
+        }
     }
 }
