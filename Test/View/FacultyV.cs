@@ -211,13 +211,17 @@ namespace Proiect.View
         /// <summary>
         /// Add the new option to the list and update the student.
         /// </summary>
-        public void AddOp(OptionV opView)
+        public void AddOp(IOption optToAdd)
         {
-            string[] row = opView.GetRow();
+            string[] row = { "", optToAdd.Nume, "" };
             if (optiuniList.Items.Count == 0)
                 row[0] = "1";
             else
                 row[0] = optiuniList.Items.Count + 1 + "";
+            if (optToAdd.Tip.ToUpper() == "BUGET")
+                row[2] = "Buget";
+            else
+                row[2] = "Taxa";
             foreach(ListViewItem itm in optiuniList.Items)
             {
                 if (itm.SubItems[1].Text.ToUpper() == row[1].ToUpper() && itm.SubItems[2].Text.ToUpper() == row[2].ToUpper())
@@ -268,7 +272,7 @@ namespace Proiect.View
         private void addSpecB_Click(object sender, EventArgs e)
         {
             SpecVcs newSpecView = new SpecVcs(controller.GetFac(), this);
-            newSpecView.Enable();
+            newSpecView.LoadView();
         }
 
         /// <summary>
@@ -331,6 +335,8 @@ namespace Proiect.View
             candList.Items.Clear();
             if (specBox.Items.Count == 0)
                 return;
+            if (specBox.SelectedItem == null)
+                return;
             ISpecialization spec = controller.GetSpec(specBox.SelectedItem.ToString());
             List<IStudent> studs = controller.GetStudentsFor(spec);
             if(studs.Count != 0)
@@ -346,10 +352,11 @@ namespace Proiect.View
         /// </summary>
         private void LoadAdmisi()
         {
-            candList.Items.Clear();
+            admList.Items.Clear();
             if (specBox.Items.Count == 0)
                 return;
-            scandidati.Text = "Lista Admisi:";
+            if (specBox.SelectedItem == null)
+                return;
             ISpecialization spec = controller.GetSpec(specBox.SelectedItem.ToString());
             List<IStudent> studs = controller.GetAllStudents();
             if (studs != null)
@@ -359,7 +366,7 @@ namespace Proiect.View
                     if (stud.Status().ToUpper() == "INTRAT" && stud.EnrolledSpec == spec)
                     {
                         string[] row = { stud.Index.ToString(), stud.Nume, stud.Prenume, "" };
-                        candList.Items.Add(new ListViewItem(row));
+                        admList.Items.Add(new ListViewItem(row));
                     }
                 }
             }
@@ -429,6 +436,11 @@ namespace Proiect.View
         /// <param name="newSpec"></param>
         public void AddNewSpec(ISpecialization newSpec)
         {
+            if (controller.HaveSpec(newSpec.Nume))
+            {
+                MessageBox.Show("Specialization already Exists!", "Specialiazation Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             controller.AddSpec(newSpec);
             LoadSpecs();
             LoadSpecInfo(newSpec);
@@ -440,6 +452,14 @@ namespace Proiect.View
         /// <param name="newTest"></param>
         public void AddNewTest(ITest newTest)
         {
+            foreach(ListViewItem itm in testsList.Items)
+            {
+                if(itm.SubItems[1].ToString().ToUpper() == newTest.Nume.ToUpper())
+                {
+                    MessageBox.Show("Test already Exists!", "Test Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             string[] row = { testsList.Items.Count + 1 + "", newTest.Nume, newTest.Req.ToString(), newTest.Pondere.ToString() };
             testsList.Items.Add(new ListViewItem(row));
         }
@@ -452,7 +472,7 @@ namespace Proiect.View
         private void addTestB_Click(object sender, EventArgs e)
         {
             TestV newTest = new TestV(this);
-            newTest.Enable();
+            newTest.LoadView();
         }
 
         /// <summary>
@@ -517,20 +537,6 @@ namespace Proiect.View
         }
 
         /// <summary>
-        /// Edit option butto function.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void editOpB_Click(object sender, EventArgs e)
-        {
-            if (optiuniList.SelectedItems.Count == 0)
-                return;
-            ListViewItem opToEdit = optiuniList.SelectedItems[0];
-            IView editView = new EditOptionV(opToEdit, this);
-            editView.LoadView();
-        }
-
-        /// <summary>
         /// Update a option in option list.
         /// </summary>
         /// <param name="opToUpdate"></param>
@@ -583,5 +589,31 @@ namespace Proiect.View
         {
             return controller.GetOptions();
         }
+
+        public IOption GetOption(string name)
+        {
+            return controller.GetOption(name);
+        }
+
+        private void editTestB_Click(object sender, EventArgs e)
+        {
+            if (testsList.SelectedItems.Count == 0)
+                return;
+            EditTestV editView = new EditTestV(testsList.SelectedItems[0], this);
+            editView.LoadView();
+        }
+
+        public void EditTest(ListViewItem itm)
+        {
+            for(int it = 0; it < testsList.Items.Count; it++)
+            {
+                if(testsList.Items[it].SubItems[0].Text.ToUpper() == itm.SubItems[0].Text.ToUpper())
+                {
+                    testsList.Items[it] = itm;
+                    return;
+                }
+            }
+        }
+        
     }
 }

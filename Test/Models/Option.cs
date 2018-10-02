@@ -19,7 +19,7 @@ namespace Proiect.Models
             this.spec = spec;
             this.buget = buget;
             Update();
-            GenerateResults();
+            //GenerateResults();
         }
 
         /// <summary>
@@ -118,6 +118,8 @@ namespace Proiect.Models
         /// <returns></returns>
         public double Nota()
         {
+            ///////     Pentru test return 12       ////////
+            return 12;
             double nota = 0;
             int pondereTotal = 0;
 

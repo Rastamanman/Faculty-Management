@@ -33,6 +33,8 @@ namespace Proiect
             teste.Add(test1);
             teste.Add(test2);
             Specialization spec1 = new Specialization("Laser Tek", fac, 30, 20, teste);
+            spec1.AddOption(new Option(spec1, true));
+            spec1.AddOption(new Option(spec1, false));
             teste = new List<ITest>();
             test2 = new Test("Nota Bac", 100);
             teste.Add(test2);

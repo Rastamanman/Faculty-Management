@@ -26,5 +26,6 @@ namespace Proiect.Models
         int GetIndexForStud();
         List<IStudent> GetStudentsFor(ISpecialization spec);
         List<IOption> GetOptions();
+        IOption GetOption(string name);
     }
 }

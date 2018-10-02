@@ -57,6 +57,7 @@ namespace Proiect.View
         /// </summary>
         public void LoadView()
         {
+            SetDesktopLocation(Cursor.Position.X, Cursor.Position.Y);
             LoadInfo();
             this.Enable();
         }

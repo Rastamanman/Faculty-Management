@@ -34,15 +34,17 @@ namespace Proiect.View
         public void LoadView()
         {
             UpdateInfo();
+            SetDesktopLocation(Cursor.Position.X, Cursor.Position.Y);
             this.Enable();
         }
 
         public void UpdateInfo()
         {
+            optionsList.Items.Clear();
             List<IOption> opts = view.GetOptions();
             foreach(IOption opt in opts)
             {
-                optionsList.Items.Add(opt.ToString());
+                optionsList.Items.Add(opt);
             }
         }
 
@@ -51,8 +53,7 @@ namespace Proiect.View
         /// </summary>
         public void ClearView()
         {
-            spec.Clear();
-            buget.Checked = false;
+
         }
 
         /// <summary>
@@ -89,24 +90,7 @@ namespace Proiect.View
         /// <param name="e"></param>
         private void addOpB_Click(object sender, EventArgs e)
         {
-            if (view.HaveSpec(spec.Text))
-                view.AddOp(this);
-            else
-                MessageBox.Show("Specialization does not exist!", "Specialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        /// <summary>
-        /// Getter for the row for option list.
-        /// </summary>
-        /// <returns></returns>
-        public string[] GetRow()
-        {
-            string[] row = { "", spec.Text, "" };
-            if (buget.Checked == true)
-                row[2] = "Buget";
-            else
-                row[2] = "Taxa";
-            return row;
+            view.AddOp(view.GetOption(optionsList.Text));
         }
 
         /// <summary>

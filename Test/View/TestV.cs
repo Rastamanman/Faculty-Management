@@ -32,7 +32,8 @@ namespace Proiect.View
 
         public void LoadView()
         {
-
+            SetDesktopLocation(Cursor.Position.X, Cursor.Position.Y);
+            this.Enable();
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Proiect.View
         /// </summary>
         public void LoadTest()
         {
-            test = new Proiect.Models.Test(nume.Text, Int32.Parse(pondere.Text), Int32.Parse(req.Text));
+            test = new Test(nume.Text, Int32.Parse(pondere.Text), Int32.Parse(req.Text));
         }
 
         /// <summary>

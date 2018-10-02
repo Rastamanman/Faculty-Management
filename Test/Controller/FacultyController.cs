@@ -199,5 +199,10 @@ namespace Proiect.Controller
         {
             return faculta.GetOptions();
         }
+        
+        public IOption GetOption(string name)
+        {
+            return faculta.GetOption(name);
+        }
     }
 }

@@ -39,8 +39,8 @@
             this.remStudB = new System.Windows.Forms.Button();
             this.viewStudB = new System.Windows.Forms.Button();
             this.studentInfo = new System.Windows.Forms.Panel();
+            this.enrolledSpec = new System.Windows.Forms.Label();
             this.addGradeB = new System.Windows.Forms.Button();
-            this.editOpB = new System.Windows.Forms.Button();
             this.editStudB = new System.Windows.Forms.Button();
             this.saveChB = new System.Windows.Forms.Button();
             this.optiuniList = new System.Windows.Forms.ListView();
@@ -70,6 +70,7 @@
             this.idSpecL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numeSpecL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.specInfo = new System.Windows.Forms.Panel();
+            this.editTestB = new System.Windows.Forms.Button();
             this.editSpecB = new System.Windows.Forms.Button();
             this.testsList = new System.Windows.Forms.ListView();
             this.idCerinta = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -94,26 +95,24 @@
             this.addSpecB = new System.Windows.Forms.Button();
             this.viewSpecB = new System.Windows.Forms.Button();
             this.sspecs = new System.Windows.Forms.Label();
-            this.editTestB = new System.Windows.Forms.Button();
-            this.enrolledSpec = new System.Windows.Forms.Label();
             this.admitTab = new System.Windows.Forms.TabPage();
-            this.sspecname = new System.Windows.Forms.Label();
-            this.specBox = new System.Windows.Forms.ComboBox();
+            this.admList = new System.Windows.Forms.ListView();
+            this.idAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.numeAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prenumeAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.taxAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.medieAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.examB = new System.Windows.Forms.Button();
             this.candList = new System.Windows.Forms.ListView();
             this.idStud = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numeCand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prenCand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.seeAdmB = new System.Windows.Forms.Button();
             this.seeCandB = new System.Windows.Forms.Button();
-            this.scandidati = new System.Windows.Forms.Label();
-            this.examB = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.idAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.numeAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prenumeAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.taxAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.medieAdmis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label5 = new System.Windows.Forms.Label();
+            this.scandidati = new System.Windows.Forms.Label();
+            this.specBox = new System.Windows.Forms.ComboBox();
+            this.sspecname = new System.Windows.Forms.Label();
             this.mainTab.SuspendLayout();
             this.students.SuspendLayout();
             this.studentInfo.SuspendLayout();
@@ -220,7 +219,6 @@
             // 
             this.studentInfo.Controls.Add(this.enrolledSpec);
             this.studentInfo.Controls.Add(this.addGradeB);
-            this.studentInfo.Controls.Add(this.editOpB);
             this.studentInfo.Controls.Add(this.editStudB);
             this.studentInfo.Controls.Add(this.saveChB);
             this.studentInfo.Controls.Add(this.optiuniList);
@@ -244,24 +242,23 @@
             this.studentInfo.Size = new System.Drawing.Size(410, 436);
             this.studentInfo.TabIndex = 0;
             // 
+            // enrolledSpec
+            // 
+            this.enrolledSpec.AutoSize = true;
+            this.enrolledSpec.Location = new System.Drawing.Point(150, 126);
+            this.enrolledSpec.Name = "enrolledSpec";
+            this.enrolledSpec.Size = new System.Drawing.Size(10, 13);
+            this.enrolledSpec.TabIndex = 8;
+            this.enrolledSpec.Text = ".";
+            // 
             // addGradeB
             // 
-            this.addGradeB.Location = new System.Drawing.Point(160, 342);
+            this.addGradeB.Location = new System.Drawing.Point(163, 304);
             this.addGradeB.Name = "addGradeB";
-            this.addGradeB.Size = new System.Drawing.Size(89, 33);
+            this.addGradeB.Size = new System.Drawing.Size(89, 71);
             this.addGradeB.TabIndex = 7;
             this.addGradeB.Text = "Add Grades";
             this.addGradeB.UseVisualStyleBackColor = true;
-            // 
-            // editOpB
-            // 
-            this.editOpB.Location = new System.Drawing.Point(159, 304);
-            this.editOpB.Name = "editOpB";
-            this.editOpB.Size = new System.Drawing.Size(90, 32);
-            this.editOpB.TabIndex = 6;
-            this.editOpB.Text = "Edit Option";
-            this.editOpB.UseVisualStyleBackColor = true;
-            this.editOpB.Click += new System.EventHandler(this.editOpB_Click);
             // 
             // editStudB
             // 
@@ -532,6 +529,16 @@
             this.specInfo.Size = new System.Drawing.Size(445, 477);
             this.specInfo.TabIndex = 3;
             // 
+            // editTestB
+            // 
+            this.editTestB.Location = new System.Drawing.Point(360, 177);
+            this.editTestB.Name = "editTestB";
+            this.editTestB.Size = new System.Drawing.Size(78, 23);
+            this.editTestB.TabIndex = 5;
+            this.editTestB.Text = "Edit Test";
+            this.editTestB.UseVisualStyleBackColor = true;
+            this.editTestB.Click += new System.EventHandler(this.editTestB_Click);
+            // 
             // editSpecB
             // 
             this.editSpecB.Location = new System.Drawing.Point(360, 8);
@@ -745,27 +752,9 @@
             this.sspecs.TabIndex = 1;
             this.sspecs.Text = "Specializari:";
             // 
-            // editTestB
-            // 
-            this.editTestB.Location = new System.Drawing.Point(360, 177);
-            this.editTestB.Name = "editTestB";
-            this.editTestB.Size = new System.Drawing.Size(78, 23);
-            this.editTestB.TabIndex = 5;
-            this.editTestB.Text = "Edit Test";
-            this.editTestB.UseVisualStyleBackColor = true;
-            // 
-            // enrolledSpec
-            // 
-            this.enrolledSpec.AutoSize = true;
-            this.enrolledSpec.Location = new System.Drawing.Point(150, 126);
-            this.enrolledSpec.Name = "enrolledSpec";
-            this.enrolledSpec.Size = new System.Drawing.Size(10, 13);
-            this.enrolledSpec.TabIndex = 8;
-            this.enrolledSpec.Text = ".";
-            // 
             // admitTab
             // 
-            this.admitTab.Controls.Add(this.listView1);
+            this.admitTab.Controls.Add(this.admList);
             this.admitTab.Controls.Add(this.examB);
             this.admitTab.Controls.Add(this.candList);
             this.admitTab.Controls.Add(this.seeAdmB);
@@ -782,22 +771,53 @@
             this.admitTab.Text = "Admitere";
             this.admitTab.UseVisualStyleBackColor = true;
             // 
-            // sspecname
+            // admList
             // 
-            this.sspecname.AutoSize = true;
-            this.sspecname.Location = new System.Drawing.Point(17, 15);
-            this.sspecname.Name = "sspecname";
-            this.sspecname.Size = new System.Drawing.Size(67, 13);
-            this.sspecname.TabIndex = 0;
-            this.sspecname.Text = "Specializare:";
+            this.admList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idAdmis,
+            this.numeAdmis,
+            this.prenumeAdmis,
+            this.taxAdmis,
+            this.medieAdmis});
+            this.admList.Location = new System.Drawing.Point(395, 81);
+            this.admList.Name = "admList";
+            this.admList.Size = new System.Drawing.Size(366, 391);
+            this.admList.TabIndex = 9;
+            this.admList.UseCompatibleStateImageBehavior = false;
+            this.admList.View = System.Windows.Forms.View.Details;
             // 
-            // specBox
+            // idAdmis
             // 
-            this.specBox.FormattingEnabled = true;
-            this.specBox.Location = new System.Drawing.Point(90, 12);
-            this.specBox.Name = "specBox";
-            this.specBox.Size = new System.Drawing.Size(355, 21);
-            this.specBox.TabIndex = 1;
+            this.idAdmis.Text = "ID";
+            this.idAdmis.Width = 43;
+            // 
+            // numeAdmis
+            // 
+            this.numeAdmis.Text = "Nume";
+            this.numeAdmis.Width = 95;
+            // 
+            // prenumeAdmis
+            // 
+            this.prenumeAdmis.Text = "Prenume";
+            this.prenumeAdmis.Width = 89;
+            // 
+            // taxAdmis
+            // 
+            this.taxAdmis.Text = "Buget/Taxa";
+            this.taxAdmis.Width = 74;
+            // 
+            // medieAdmis
+            // 
+            this.medieAdmis.Text = "Medie";
+            // 
+            // examB
+            // 
+            this.examB.Location = new System.Drawing.Point(193, 40);
+            this.examB.Name = "examB";
+            this.examB.Size = new System.Drawing.Size(162, 23);
+            this.examB.TabIndex = 8;
+            this.examB.Text = "Run Exam";
+            this.examB.UseVisualStyleBackColor = true;
             // 
             // candList
             // 
@@ -848,6 +868,15 @@
             this.seeCandB.UseVisualStyleBackColor = true;
             this.seeCandB.Click += new System.EventHandler(this.seeCandB_Click_1);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(392, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Lista Admisi:";
+            // 
             // scandidati
             // 
             this.scandidati.AutoSize = true;
@@ -857,62 +886,22 @@
             this.scandidati.TabIndex = 4;
             this.scandidati.Text = "Lista Candidati:";
             // 
-            // examB
+            // specBox
             // 
-            this.examB.Location = new System.Drawing.Point(193, 40);
-            this.examB.Name = "examB";
-            this.examB.Size = new System.Drawing.Size(162, 23);
-            this.examB.TabIndex = 8;
-            this.examB.Text = "Run Exam";
-            this.examB.UseVisualStyleBackColor = true;
+            this.specBox.FormattingEnabled = true;
+            this.specBox.Location = new System.Drawing.Point(90, 12);
+            this.specBox.Name = "specBox";
+            this.specBox.Size = new System.Drawing.Size(355, 21);
+            this.specBox.TabIndex = 1;
             // 
-            // listView1
+            // sspecname
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.idAdmis,
-            this.numeAdmis,
-            this.prenumeAdmis,
-            this.taxAdmis,
-            this.medieAdmis});
-            this.listView1.Location = new System.Drawing.Point(395, 81);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(366, 391);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // idAdmis
-            // 
-            this.idAdmis.Text = "ID";
-            this.idAdmis.Width = 43;
-            // 
-            // numeAdmis
-            // 
-            this.numeAdmis.Text = "Nume";
-            this.numeAdmis.Width = 95;
-            // 
-            // prenumeAdmis
-            // 
-            this.prenumeAdmis.Text = "Prenume";
-            this.prenumeAdmis.Width = 89;
-            // 
-            // taxAdmis
-            // 
-            this.taxAdmis.Text = "Buget/Taxa";
-            this.taxAdmis.Width = 74;
-            // 
-            // medieAdmis
-            // 
-            this.medieAdmis.Text = "Medie";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(392, 65);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Lista Admisi:";
+            this.sspecname.AutoSize = true;
+            this.sspecname.Location = new System.Drawing.Point(17, 15);
+            this.sspecname.Name = "sspecname";
+            this.sspecname.Size = new System.Drawing.Size(67, 13);
+            this.sspecname.TabIndex = 0;
+            this.sspecname.Text = "Specializare:";
             // 
             // FacultyV
             // 
@@ -1002,7 +991,6 @@
         private System.Windows.Forms.Button saveChB;
         private System.Windows.Forms.Button editStudB;
         private System.Windows.Forms.Button editSpecB;
-        private System.Windows.Forms.Button editOpB;
         private System.Windows.Forms.TextBox searchBar;
         private System.Windows.Forms.Button addGradeB;
         private System.Windows.Forms.TextBox textBox1;
@@ -1019,7 +1007,7 @@
         private System.Windows.Forms.Label scandidati;
         private System.Windows.Forms.ComboBox specBox;
         private System.Windows.Forms.Label sspecname;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView admList;
         private System.Windows.Forms.ColumnHeader idAdmis;
         private System.Windows.Forms.ColumnHeader numeAdmis;
         private System.Windows.Forms.ColumnHeader prenumeAdmis;

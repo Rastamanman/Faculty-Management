@@ -282,5 +282,16 @@ namespace Proiect.Models
             }
             return listToReturn;
         }
+
+        public IOption GetOption(string name)
+        {
+            List<IOption> allOpts = GetOptions();
+            foreach(IOption opt in allOpts)
+            {
+                if (opt.ToString().ToUpper() == name.ToUpper())
+                    return opt;
+            }
+            return null;
+        }
     }
 }
